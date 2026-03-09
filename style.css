@@ -1379,11 +1379,12 @@ header {
     align-items: center;
     font-weight: 700;
     font-size: 1.1rem;
-    transition: 0.3s;
+    transition: all 0.3s ease;
     color: var(--text-dark);
     position: relative;
-    z-index: 100;
+    z-index: 10;
     user-select: none;
+    width: 100%;
 }
 
 .faq-question:hover {
@@ -1424,10 +1425,11 @@ header {
 .faq-advanced-item .faq-question {
     background: var(--primary-glow);
     padding: 30px;
-    border-radius: 24px 24px 0 0;
+    border-radius: 24px;
 }
 
 .faq-advanced-item.active .faq-question {
+    border-radius: 24px 24px 0 0;
     border-bottom: 1px solid rgba(16, 185, 129, 0.2);
 }
 

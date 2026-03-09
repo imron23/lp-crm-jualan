@@ -339,24 +339,27 @@ window.selectLoc = function (val, inputId, dropdownId) {
 initAutocomplete('eDomisili', 'eDomisiliDropdown');
 initAutocomplete('consultLoc', 'consultLocDropdown');
 
-// FAQ Accordion Toggle (Delegated)
+// FAQ Accordion Toggle (Robust)
 document.addEventListener('click', (e) => {
-    // Check for faq-question or any child of it
     const question = e.target.closest('.faq-question');
-    if (question) {
-        const item = question.parentElement;
-        if (!item) return;
+    const item = e.target.closest('.faq-item');
 
-        // Toggle active state
-        item.classList.toggle('active');
+    // If we clicked the question, or we clicked the item itself while it's closed
+    if (question || (item && !item.classList.contains('active'))) {
+        const targetItem = item || (question ? question.parentElement : null);
+        if (!targetItem) return;
 
-        // Close other items (optional, but keep it consistent)
+        const isOpening = !targetItem.classList.contains('active');
+
+        // Close other items
         document.querySelectorAll('.faq-item').forEach(other => {
-            if (other !== item) other.classList.remove('active');
+            if (other !== targetItem) other.classList.remove('active');
         });
 
-        // Debug log if needed (can be removed later)
-        console.log('Accordion toggled:', item.classList.contains('active'));
+        // Toggle current
+        targetItem.classList.toggle('active');
+
+        console.log('Accordion toggled:', targetItem.classList.contains('active'));
     }
 });
 
