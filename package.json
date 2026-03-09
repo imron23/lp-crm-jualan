@@ -15,9 +15,7 @@
   "dependencies": {
     "@prisma/client": "^7.4.2",
     "express": "^5.2.1",
+    "prisma": "^7.4.2",
     "sqlite3": "^5.1.7"
-  },
-  "devDependencies": {
-    "prisma": "^7.4.2"
   }
 }
