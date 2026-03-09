@@ -21,6 +21,7 @@ COPY . .
 RUN mkdir -p /app/prisma/data && chmod 777 /app/prisma/data
 
 # Generate Prisma Client
+ENV DATABASE_URL="file:./data/dev.db"
 RUN npx prisma generate
 
 # Final setup: 
