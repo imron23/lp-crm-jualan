@@ -1,15 +1,18 @@
 version: '3.8'
 
 services:
-  munira-crm:
+  munira-app:
     build: .
-    image: munira-crm:latest
-    container_name: munira-app
+    container_name: munira-landing-page
+    restart: always
     ports:
-      - "3000:3000"
+      - "3200:3200"
     volumes:
       - ./database:/app/prisma/data
     environment:
       - DATABASE_URL=file:/app/prisma/data/prod.db
-      - PORT=3000
-    restart: always
+      - JWT_SECRET=change_this_to_something_secure
+      - ADMIN_USER=admin
+      - ADMIN_PASS=admin123
+      - PORT=3200
+      - NODE_ENV=production

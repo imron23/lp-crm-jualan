@@ -6,7 +6,6 @@ const jwt = require('jsonwebtoken');
 const helmet = require('helmet');
 const rateLimit = require('express-rate-limit');
 const { body, validationResult } = require('express-validator');
-const xss = require('xss-clean');
 
 const prisma = new PrismaClient();
 const app = express();
@@ -32,9 +31,6 @@ const apiLimiter = rateLimit({
     message: { success: false, error: 'Terlalu banyak permintaan dari IP ini, coba lagi nanti.' }
 });
 app.use('/api/', apiLimiter);
-
-// Input Sanitization (XSS)
-app.use(xss());
 
 const JWT_SECRET = process.env.JWT_SECRET || 'fallback_secret';
 const ADMIN_USER = process.env.ADMIN_USER || 'admin';

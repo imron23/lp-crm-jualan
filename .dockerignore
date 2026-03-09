@@ -1,6 +1,5 @@
 node_modules
 npm-debug.log
-prisma/migrations
 dev.db
 dev.db-journal
 .env
