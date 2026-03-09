@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WA Panel Builder - Munira CRM</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #10b981;
+            --primary-glow: rgba(16, 185, 129, 0.2);
+            --secondary: #d4af37;
+            --bg-dark: #0a0a0c;
+            --bg-card: rgba(20, 20, 23, 0.7);
+            --text-main: #f8fafc;
+            --text-dim: #94a3b8;
+            --border: rgba(255, 255, 255, 0.08);
+            --wa-green: #25d366;
+            --glass: rgba(255, 255, 255, 0.03);
+            --font-main: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: transparent;
+            color: var(--text-main);
+            font-family: var(--font-main);
+            min-height: 100vh;
+            padding: 20px 0;
+        }
+
+        body:not(.embedded) {
+            background: radial-gradient(circle at top right, #134e4a 0%, #0a0a0c 40%),
+                radial-gradient(circle at bottom left, #1e1b4b 0%, #0a0a0c 40%);
+            background-color: var(--bg-dark);
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        header {
+            margin-bottom: 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 800;
+            font-size: 1.5rem;
+            color: var(--text-main);
+        }
+
+        .logo i {
+            color: var(--primary);
+            filter: drop-shadow(0 0 8px var(--primary-glow));
+        }
+
+        .badge-wa {
+            background: rgba(37, 211, 102, 0.1);
+            color: var(--wa-green);
+            padding: 6px 16px;
+            border-radius: 100px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            border: 1px solid rgba(37, 211, 102, 0.2);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 30px;
+        }
+
+        .card {
+            background: var(--bg-card);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--border);
+            border-radius: 32px;
+            padding: 40px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            font-weight: 800;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--text-dim);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 16px 20px;
+            color: var(--text-main);
+            font-family: inherit;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        input:focus,
+        textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            background: rgba(255, 255, 255, 0.08);
+            box-shadow: 0 0 0 4px var(--primary-glow);
+        }
+
+        .variable-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 20px;
+            border: 1px dashed var(--border);
+        }
+
+        .var-btn {
+            background: var(--glass);
+            border: 1px solid var(--border);
+            color: var(--text-main);
+            padding: 8px 16px;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .var-btn:hover {
+            background: var(--primary);
+            border-color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        .var-btn i {
+            font-size: 0.7rem;
+            opacity: 0.6;
+        }
+
+        .preview-container {
+            position: sticky;
+            top: 40px;
+        }
+
+        .wa-mockup {
+            background: url('https://user-images.githubusercontent.com/15075759/28719144-86dc0f70-73b1-11e7-911d-60d70fcded21.png');
+            background-size: cover;
+            border-radius: 24px;
+            padding: 20px;
+            min-height: 400px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            border: 8px solid #1f2937;
+        }
+
+        .wa-bubble {
+            background: #056162;
+            color: #e9edef;
+            padding: 12px 16px;
+            border-radius: 12px 0 12px 12px;
+            max-width: 85%;
+            align-self: flex-end;
+            font-size: 0.95rem;
+            position: relative;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+            white-space: pre-wrap;
+            line-height: 1.4;
+        }
+
+        .wa-bubble::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: -8px;
+            width: 0;
+            height: 0;
+            border-left: 10px solid #056162;
+            border-bottom: 10px solid transparent;
+        }
+
+        .wa-time {
+            font-size: 0.7rem;
+            opacity: 0.6;
+            margin-top: 5px;
+            text-align: right;
+            display: block;
+        }
+
+        .btn-save {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 20px;
+            border-radius: 18px;
+            width: 100%;
+            font-weight: 800;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn-save:hover {
+            filter: brightness(1.1);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px var(--primary-glow);
+        }
+
+        .template-list {
+            margin-top: 40px;
+            display: grid;
+            gap: 15px;
+        }
+
+        .template-item {
+            background: var(--glass);
+            border: 1px solid var(--border);
+            padding: 20px;
+            border-radius: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .template-item:hover {
+            border-color: var(--primary);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .temp-info h4 {
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .temp-info p {
+            font-size: 0.85rem;
+            color: var(--text-dim);
+        }
+
+        .temp-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .action-btn {
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--border);
+            border: none;
+            color: white;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .action-btn:hover {
+            background: var(--primary);
+        }
+
+        .ac-highlight {
+            color: #58a6ff;
+            font-weight: 600;
+        }
+
+        @media (max-width: 968px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <header>
+            <div class="logo">
+                <i class="fab fa-whatsapp"></i>
+                <span>MUNIRA WA BUILDER</span>
+            </div>
+            <div class="badge-wa">
+                <i class="fas fa-circle" style="font-size: 0.5rem; margin-right: 5px;"></i> Active AI Engine
+            </div>
+        </header>
+
+        <div class="grid">
+            <!-- Form Builder -->
+            <div class="card">
+                <h2 class="section-title">
+                    <i class="fas fa-plus-circle" style="color: var(--secondary);"></i>
+                    Buat Template Khusus
+                </h2>
+
+                <div class="form-group">
+                    <label>Nama Template (Bebas)</label>
+                    <input type="text" id="templateName" placeholder="Minta DP, Tanya Kabar Liburan, dll">
+                </div>
+
+                <div
+                    style="background: rgba(212, 175, 55, 0.05); padding: 30px; border-radius: 24px; border: 1px solid rgba(212, 175, 55, 0.1); margin-bottom: 30px;">
+                    <h3 style="font-size: 1rem; margin-bottom: 20px; color: var(--secondary);">
+                        <i class="fas fa-sliders-h" style="margin-right: 10px;"></i> Pengaturan Default Personalize
+                    </h3>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                        <div class="form-group" style="margin-bottom: 0;">
+                            <label>Nama Anda sebagai CS [namacs]</label>
+                            <input type="text" id="csName" placeholder="Cth: Teh Nisa, Mas Budi">
+                        </div>
+                        <div class="form-group" style="margin-bottom: 0;">
+                            <label>Sapaan Default [sapaan]</label>
+                            <input type="text" id="defaultGreet" placeholder="Cth: Bapak/Ibu, Kakak">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Klik var di bawah ini untuk insert ke teks template</label>
+                    <div class="variable-list">
+                        <button class="var-btn" onclick="insertVar('[sapaan]')"><i class="fas fa-tag"></i>
+                            [sapaan]</button>
+                        <button class="var-btn" onclick="insertVar('[nama]')"><i class="fas fa-tag"></i> [nama]</button>
+                        <button class="var-btn" onclick="insertVar('[namacs]')"><i class="fas fa-tag"></i>
+                            [namacs]</button>
+                        <button class="var-btn" onclick="insertVar('[detailprogram]')"><i class="fas fa-tag"></i>
+                            [detailprogram]</button>
+                        <button class="var-btn" onclick="insertVar('[nominal]')"><i class="fas fa-tag"></i>
+                            [nominal]</button>
+                        <button class="var-btn" onclick="insertVar('[domisili]')"><i class="fas fa-tag"></i>
+                            [domisili]</button>
+                        <button class="var-btn" onclick="insertVar('[paspor]')"><i class="fas fa-tag"></i>
+                            [paspor]</button>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Isi Pesan WA</label>
+                    <textarea id="waMessage" rows="12"
+                        placeholder="Ketik template Anda di sini, sisipkan variabel di tempat yang Anda mau..."></textarea>
+                </div>
+
+                <button class="btn-save" onclick="saveTemplate()">
+                    <i class="fas fa-cloud-upload-alt"></i> Simpan Template
+                </button>
+            </div>
+
+            <!-- Preview & List -->
+            <div class="preview-container">
+                <div class="card" style="padding: 25px;">
+                    <h3
+                        style="font-size: 1.1rem; margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center;">
+                        <span><i class="fas fa-eye" style="margin-right: 10px; color: var(--primary);"></i> Cek
+                            Preview</span>
+                        <small style="color: var(--text-dim); font-size: 0.7rem;">Real-time Render</small>
+                    </h3>
+
+                    <div class="wa-mockup">
+                        <div class="wa-bubble" id="waPreview">
+                            Assalamualaikum [sapaan] [nama], perkenalkan saya [namacs] dari Munira Travel...
+                            <span class="wa-time">10:42 <i class="fas fa-check-double"
+                                    style="color: #53bdeb;"></i></span>
+                        </div>
+                    </div>
+
+                    <div class="template-list">
+                        <h3 style="font-size: 1rem; margin: 10px 0; color: var(--text-dim);">Daftar Template Tersimpan
+                        </h3>
+
+                        <div class="template-item">
+                            <div class="temp-info">
+                                <h4>Follow Up DP</h4>
+                                <p>Dibuat: 2 jam yang lalu</p>
+                            </div>
+                            <div class="temp-actions">
+                                <button class="action-btn"><i class="fas fa-edit"></i></button>
+                                <button class="action-btn"
+                                    style="background: rgba(239, 68, 68, 0.1); color: #ef4444;"><i
+                                        class="fas fa-trash"></i></button>
+                            </div>
+                        </div>
+
+                        <div class="template-item">
+                            <div class="temp-info">
+                                <h4>Tanya Kabar</h4>
+                                <p>Dibuat: Kemarin</p>
+                            </div>
+                            <div class="temp-actions">
+                                <button class="action-btn"><i class="fas fa-edit"></i></button>
+                                <button class="action-btn"
+                                    style="background: rgba(239, 68, 68, 0.1); color: #ef4444;"><i
+                                        class="fas fa-trash"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const waMessage = document.getElementById('waMessage');
+        const waPreview = document.getElementById('waPreview');
+        const csName = document.getElementById('csName');
+        const defaultGreet = document.getElementById('defaultGreet');
+
+        function updatePreview() {
+            let text = waMessage.value;
+            if (!text) {
+                waPreview.innerHTML = 'Ketik template untuk melihat preview...<span class="wa-time">10:42 <i class="fas fa-check-double" style="color: #53bdeb;"></i></span>';
+                return;
+            }
+
+            // Dummy Replacement for Preview
+            const replacements = {
+                '\\[sapaan\\]': '<span class="ac-highlight">' + (defaultGreet.value || 'Bapak/Ibu') + '</span>',
+                '\\[nama\\]': '<span class="ac-highlight">Fulan</span>',
+                '\\[namacs\\]': '<span class="ac-highlight">' + (csName.value || 'Admin') + '</span>',
+                '\\[detailprogram\\]': '<span class="ac-highlight">Umrah Reguler 12 Hari</span>',
+                '\\[nominal\\]': '<span class="ac-highlight">Rp 35.000.000</span>',
+                '\\[domisili\\]': '<span class="ac-highlight">Jakarta Selatan</span>',
+                '\\[paspor\\]': '<span class="ac-highlight">Sudah Tersedia</span>'
+            };
+
+            for (const [key, value] of Object.entries(replacements)) {
+                text = text.replace(new RegExp(key, 'g'), value);
+            }
+
+            waPreview.innerHTML = text + '<span class="wa-time">10:42 <i class="fas fa-check-double" style="color: #53bdeb;"></i></span>';
+        }
+
+        function insertVar(val) {
+            const start = waMessage.selectionStart;
+            const end = waMessage.selectionEnd;
+            const text = waMessage.value;
+            waMessage.value = text.substring(0, start) + val + text.substring(end);
+            waMessage.focus();
+            waMessage.selectionStart = waMessage.selectionEnd = start + val.length;
+            updatePreview();
+        }
+
+        waMessage.addEventListener('input', updatePreview);
+        csName.addEventListener('input', updatePreview);
+        defaultGreet.addEventListener('input', updatePreview);
+
+        function saveTemplate() {
+            const name = document.getElementById('templateName').value;
+            if (!name) {
+                alert('Silakan isi nama template terlebih dahulu.');
+                return;
+            }
+            alert('Template "' + name + '" berhasil disimpan!');
+        }
+
+        // Initial call
+        waMessage.value = "Assalamualaikum [sapaan] [nama], perkenalkan saya [namacs] dari Munira Travel. \n\nIzin konfirmasi untuk pendaftaran program [detailprogram] dengan nominal [nominal]. \n\nBagaimana kabarnya hari ini [sapaan]?";
+        // Detection for iframe
+        if (window.self !== window.top) {
+            document.body.classList.add('embedded');
+        }
+
+        updatePreview();
+    </script>
+
+</body>
+
+</html>

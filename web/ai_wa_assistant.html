@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI WA Assistant - Munira CRM</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #a855f7;
+            --primary-glow: rgba(168, 85, 247, 0.2);
+            --secondary: #d4af37;
+            --bg-dark: #09090b;
+            --text-main: #f8fafc;
+            --text-dim: #94a3b8;
+            --border: rgba(255, 255, 255, 0.08);
+            --font-main: 'Plus Jakarta Sans', sans-serif;
+            --wa-green: #25d366;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            font-family: var(--font-main);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            background: radial-gradient(circle at top right, #3b0764 0%, #09090b 50%),
+                radial-gradient(circle at bottom left, #1e1b4b 0%, #09090b 50%);
+            overflow: hidden;
+        }
+
+        .ai-assistant-card {
+            width: 100%;
+            max-width: 500px;
+            background: rgba(15, 15, 20, 0.7);
+            backdrop-filter: blur(40px);
+            border: 1px solid var(--border);
+            border-radius: 48px;
+            padding: 40px;
+            position: relative;
+            box-shadow: 0 50px 100px -20px rgba(0, 0, 0, 0.7);
+            transform: translateY(0);
+            animation: float 6s infinite ease-in-out;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-15px);
+            }
+        }
+
+        /* Status Header */
+        .status-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 35px;
+        }
+
+        .mode-badge {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 8px 18px;
+            border-radius: 100px;
+            border: 1px solid var(--border);
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .online-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--wa-green);
+            border-radius: 50%;
+            position: relative;
+            box-shadow: 0 0 10px var(--wa-green);
+        }
+
+        .online-dot::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--wa-green);
+            border-radius: 50%;
+            animation: pulse-dot 2s infinite;
+        }
+
+        @keyframes pulse-dot {
+            0% {
+                transform: scale(1);
+                opacity: 1;
+            }
+
+            100% {
+                transform: scale(3);
+                opacity: 0;
+            }
+        }
+
+        /* Tone Selector */
+        .tone-selector {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 30px;
+        }
+
+        .tone-btn {
+            background: rgba(168, 85, 247, 0.1);
+            color: var(--primary);
+            padding: 10px 20px;
+            border-radius: 16px;
+            font-size: 0.8rem;
+            font-weight: 800;
+            border: 1px solid rgba(168, 85, 247, 0.2);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 0 20px rgba(168, 85, 247, 0.1);
+        }
+
+        .tone-btn i {
+            font-size: 0.9rem;
+        }
+
+        /* Message Area */
+        .message-viewport {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 32px;
+            padding: 30px;
+            margin-bottom: 30px;
+            min-height: 200px;
+            position: relative;
+            line-height: 1.6;
+            font-size: 1.1rem;
+            color: #e2e8f0;
+        }
+
+        .typing-cursor {
+            display: inline-block;
+            width: 2px;
+            height: 1.2em;
+            background: var(--primary);
+            margin-left: 2px;
+            vertical-align: middle;
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+
+            0%,
+            100% {
+                opacity: 0;
+            }
+
+            50% {
+                opacity: 1;
+            }
+        }
+
+        /* Button Send */
+        .btn-wa-send {
+            width: 100%;
+            padding: 22px;
+            background: var(--wa-green);
+            color: white;
+            border: none;
+            border-radius: 20px;
+            font-weight: 800;
+            font-size: 1.1rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 20px 40px rgba(37, 211, 102, 0.2);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn-wa-send:hover {
+            transform: scale(1.03) translateY(-5px);
+            filter: brightness(1.1);
+            box-shadow: 0 30px 60px rgba(37, 211, 102, 0.4);
+        }
+
+        /* Footer Tech */
+        .tech-footer {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.75rem;
+            color: var(--text-dim);
+            font-weight: 600;
+        }
+
+        .badge-gpt {
+            background: #10a37f;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.65rem;
+        }
+
+        /* Decorative Background */
+        .glow-orb {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: var(--primary-glow);
+            filter: blur(100px);
+            z-index: -1;
+            top: -50px;
+            right: -50px;
+        }
+
+        .moon-icon {
+            position: absolute;
+            top: -40px;
+            right: 40px;
+            font-size: 3rem;
+            color: var(--secondary);
+            opacity: 0.2;
+            filter: blur(2px);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="ai-assistant-card">
+        <i class="fas fa-moon moon-icon"></i>
+        <div class="glow-orb"></div>
+
+        <div class="status-header">
+            <div class="mode-badge">
+                <div class="online-dot"></div>
+                <span>Online • Senior Concierge Mode</span>
+            </div>
+            <i class="fas fa-ellipsis-h" style="color: var(--text-dim); cursor: pointer;"></i>
+        </div>
+
+        <div class="tone-selector">
+            <div class="tone-btn">
+                <span>✨ SPIRITUAL TONE</span>
+            </div>
+        </div>
+
+        <div class="message-viewport" id="messageOutput">
+            <!-- Text injected by JS -->
+        </div>
+
+        <button class="btn-wa-send">
+            <i class="fab fa-whatsapp" style="font-size: 1.5rem;"></i>
+            <span>KIRIM KE WA</span>
+        </button>
+
+        <div class="tech-footer">
+            <i class="fas fa-shield-virus"></i>
+            <span>AI Fallback: Active</span>
+            <span class="badge-gpt">GPT-4o</span>
+        </div>
+    </div>
+
+    <script>
+        const message = "Assalamu'alaikum Bapak Ahmad 🌙,\n\nAlhamdulillah, kami sangat bahagia menerima niat mulia Bapak untuk menuju Baitullah bersama keluarga tahun ini. Insya Allah, kami siap mendampingi setiap langkah ibadah Bapak dengan segenap hati...";
+        const output = document.getElementById('messageOutput');
+        let index = 0;
+
+        function typeWriter() {
+            if (index < message.length) {
+                if (message.charAt(index) === '\n') {
+                    output.innerHTML += '<br>';
+                } else {
+                    output.innerHTML += message.charAt(index);
+                }
+                index++;
+                setTimeout(typeWriter, 40);
+            } else {
+                output.innerHTML += '<span class="typing-cursor"></span>';
+            }
+        }
+
+        // Start typing after a short delay
+        setTimeout(typeWriter, 1000);
+    </script>
+</body>
+
+</html>

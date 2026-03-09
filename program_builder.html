@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Program Builder - Munira CRM</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #8b5cf6;
+            --primary-glow: rgba(139, 92, 246, 0.2);
+            --secondary: #d4af37;
+            --bg-dark: #07070a;
+            --bg-card: rgba(15, 15, 20, 0.8);
+            --text-main: #f8fafc;
+            --text-dim: #94a3b8;
+            --border: rgba(255, 255, 255, 0.08);
+            --font-main: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            font-family: var(--font-main);
+            min-height: 100vh;
+            padding: 40px 20px;
+            background: radial-gradient(circle at top left, #2e1065 0%, #07070a 40%),
+                radial-gradient(circle at bottom right, #1e1b4b 0%, #07070a 40%);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            margin-bottom: 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 800;
+            font-size: 1.5rem;
+        }
+
+        .logo i {
+            color: var(--primary);
+            filter: drop-shadow(0 0 8px var(--primary-glow));
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 350px 1fr;
+            gap: 30px;
+        }
+
+        .card {
+            background: var(--bg-card);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--border);
+            border-radius: 32px;
+            padding: 30px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+
+        .section-title {
+            font-size: 1.4rem;
+            font-weight: 800;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .builder-tools {
+            display: grid;
+            gap: 15px;
+        }
+
+        .tool-item {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            padding: 15px 20px;
+            border-radius: 18px;
+            cursor: grab;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            transition: 0.3s;
+        }
+
+        .tool-item:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: var(--primary);
+            transform: translateX(5px);
+        }
+
+        .tool-item i {
+            width: 40px;
+            height: 40px;
+            background: var(--primary-glow);
+            color: var(--primary);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .timeline-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .day-block {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px dashed var(--border);
+            border-radius: 24px;
+            padding: 25px;
+            min-height: 150px;
+            position: relative;
+        }
+
+        .day-label {
+            position: absolute;
+            top: -12px;
+            left: 20px;
+            background: var(--primary);
+            color: white;
+            padding: 4px 16px;
+            border-radius: 100px;
+            font-size: 0.75rem;
+            font-weight: 800;
+            text-transform: uppercase;
+        }
+
+        .program-slot {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 10px;
+        }
+
+        .dropped-item {
+            background: var(--bg-dark);
+            border: 1px solid var(--border);
+            padding: 15px;
+            border-radius: 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .btn-plus {
+            width: 100%;
+            padding: 15px;
+            background: transparent;
+            border: 2px dashed var(--border);
+            border-radius: 18px;
+            color: var(--text-dim);
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+            margin-top: 10px;
+        }
+
+        .btn-plus:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            background: var(--primary-glow);
+        }
+
+        .package-header {
+            margin-bottom: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+
+        .package-title input {
+            background: transparent;
+            border: none;
+            border-bottom: 2px solid var(--border);
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--text-main);
+            width: 100%;
+            padding: 5px 0;
+            margin-bottom: 10px;
+        }
+
+        .package-title input:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .action-group {
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 14px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1px solid var(--border);
+            color: var(--text-main);
+            padding: 12px 24px;
+            border-radius: 14px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .btn-outline:hover {
+            background: rgba(255, 255, 255, 0.05);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <header>
+            <div class="logo">
+                <i class="fas fa-calendar-alt"></i>
+                <span>MUNIRA PROGRAM BUILDER</span>
+            </div>
+            <div class="action-group">
+                <button class="btn-outline">Download PDF</button>
+                <button class="btn-primary" onclick="alert('Program berhasil disimpan!')">Simpan Paket</button>
+            </div>
+        </header>
+
+        <div class="grid">
+            <!-- Components Sidebar -->
+            <aside>
+                <div class="card">
+                    <h2 class="section-title"><i class="fas fa-puzzle-piece"></i> Itinerary Blocks</h2>
+                    <div class="builder-tools">
+                        <div class="tool-item" draggable="true" ondragstart="drag(event)" id="flight">
+                            <i class="fas fa-plane"></i>
+                            <div>
+                                <strong>Penerbangan</strong>
+                                <p style="font-size: 0.75rem; color: var(--text-dim);">Daftar Maskapai</p>
+                            </div>
+                        </div>
+                        <div class="tool-item" draggable="true" ondragstart="drag(event)" id="hotel">
+                            <i class="fas fa-hotel"></i>
+                            <div>
+                                <strong>Hotel Premium</strong>
+                                <p style="font-size: 0.75rem; color: var(--text-dim);">Check-in & Check-out</p>
+                            </div>
+                        </div>
+                        <div class="tool-item" draggable="true" ondragstart="drag(event)" id="kaaba">
+                            <i class="fas fa-mosque"></i>
+                            <div>
+                                <strong>Ibadah Umrah</strong>
+                                <p style="font-size: 0.75rem; color: var(--text-dim);">Tawaf, Sa'i, Tahallul</p>
+                            </div>
+                        </div>
+                        <div class="tool-item" draggable="true" ondragstart="drag(event)" id="buffet">
+                            <i class="fas fa-utensils"></i>
+                            <div>
+                                <strong>Makan Malam</strong>
+                                <p style="font-size: 0.75rem; color: var(--text-dim);">Buffet Al-Safeer</p>
+                            </div>
+                        </div>
+                        <div class="tool-item" draggable="true" ondragstart="drag(event)" id="bus">
+                            <i class="fas fa-bus-alt"></i>
+                            <div>
+                                <strong>City Tour</strong>
+                                <p style="font-size: 0.75rem; color: var(--text-dim);">Ziarah Madinah/Makkah</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Main Workspace -->
+            <main>
+                <div class="package-header">
+                    <div class="package-title" style="flex: 1;">
+                        <input type="text" value="Umrah Premium Syawal 12 Hari">
+                        <p style="color: var(--text-dim);">Model Keberangkatan: Group Exclusive</p>
+                    </div>
+                    <div style="text-align: right;">
+                        <span
+                            style="display: block; font-size: 0.8rem; color: var(--secondary); font-weight: 800;">ESTIMASI
+                            HARGA</span>
+                        <strong style="font-size: 1.8rem; color: var(--primary);">Rp 34.500.000</strong>
+                    </div>
+                </div>
+
+                <div class="timeline-container">
+                    <div class="day-block" ondrop="drop(event)" ondragover="allowDrop(event)">
+                        <div class="day-label">Hari 1: Kedatangan</div>
+                        <div class="program-slot" id="slot1">
+                            <div class="dropped-item">
+                                <span style="display: flex; align-items: center; gap: 10px;">
+                                    <i class="fas fa-plane" style="color: var(--primary);"></i>
+                                    <strong>CGK - JED (Saudi Airlines)</strong>
+                                </span>
+                                <i class="fas fa-times" style="cursor: pointer; opacity: 0.5;"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="day-block" ondrop="drop(event)" ondragover="allowDrop(event)">
+                        <div class="day-label">Hari 2: Madinah</div>
+                        <div class="program-slot" id="slot2">
+                            <div class="dropped-item">
+                                <span style="display: flex; align-items: center; gap: 10px;">
+                                    <i class="fas fa-hotel" style="color: var(--primary);"></i>
+                                    <strong>Hotel Movenpick Madinah</strong>
+                                </span>
+                                <i class="fas fa-times" style="cursor: pointer; opacity: 0.5;"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="day-block" ondrop="drop(event)" ondragover="allowDrop(event)">
+                        <div class="day-label">Hari 3: Ibadah</div>
+                        <div class="program-slot" id="slot3">
+                            <p style="color: var(--text-dim); text-align: center; width: 100%; padding: 20px;">Drag item
+                                ke sini untuk menambah itinerary...</p>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="btn-plus">+ Tambah Hari (Max 30 Hari)</button>
+            </main>
+        </div>
+    </div>
+
+    <script>
+        function allowDrop(ev) {
+            ev.preventDefault();
+        }
+
+        function drag(ev) {
+            ev.dataTransfer.setData("text", ev.target.id);
+        }
+
+        function drop(ev) {
+            ev.preventDefault();
+            var data = ev.dataTransfer.getData("text");
+            var node = document.getElementById(data).cloneNode(true);
+
+            // Transform cloned node to dropped item style
+            var droppedItem = document.createElement("div");
+            droppedItem.className = "dropped-item";
+
+            var icon = node.querySelector("i").outerHTML;
+            var title = node.querySelector("strong").innerText;
+
+            droppedItem.innerHTML = `
+            <span style="display: flex; align-items: center; gap: 10px;">
+                ${icon}
+                <strong>${title}</strong>
+            </span>
+            <i class="fas fa-times" style="cursor: pointer; opacity: 0.5;" onclick="this.parentElement.remove()"></i>
+        `;
+
+            // Find the slot in the current target
+            var target = ev.target;
+            while (target && !target.classList.contains('day-block')) {
+                target = target.parentElement;
+            }
+
+            if (target) {
+                var slot = target.querySelector('.program-slot');
+                // Remove placeholder if exists
+                if (slot.querySelector('p')) {
+                    slot.innerHTML = '';
+                }
+                slot.appendChild(droppedItem);
+            }
+        }
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  munira-crm:
+    build: .
+    image: munira-crm:latest
+    container_name: munira-app
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./database:/app/prisma/data
+    environment:
+      - DATABASE_URL=file:/app/prisma/data/prod.db
+      - PORT=3000
+    restart: always
