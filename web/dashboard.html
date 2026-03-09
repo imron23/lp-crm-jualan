@@ -46,12 +46,18 @@
             color: var(--text-gray);
             font-size: 0.85rem;
             text-transform: uppercase;
+            white-space: nowrap;
         }
 
         .lead-table td {
             padding: 15px;
             border-bottom: 1px solid var(--border-light);
             font-size: 0.95rem;
+            white-space: nowrap;
+        }
+
+        .dash-card {
+            overflow-x: auto;
         }
 
         .status-badge {
@@ -135,8 +141,13 @@
                         <th>Name</th>
                         <th>Phone</th>
                         <th>Location</th>
+                        <th>Position</th>
                         <th>Ad Spend</th>
+                        <th>Pilgrims</th>
+                        <th>Obstacles</th>
+                        <th>Expected Features</th>
                         <th>Meeting</th>
+                        <th>Agreed</th>
                         <th>WhatsApp</th>
                         <th>Status</th>
                     </tr>
@@ -171,14 +182,25 @@
             const body = document.getElementById('leadBody');
             body.innerHTML = leads.map(l => {
                 const waNumber = formatWA(l.phone);
+                const agreedBadge = l.agreed
+                    ? '<span class="status-badge" style="background: #d4edda; color: #155724;">Yes</span>'
+                    : '<span class="status-badge" style="background: #f8d7da; color: #721c24;">No</span>';
+                const statusBadge = l.agreed
+                    ? '<span class="status-badge" style="background: #d4edda; color: #155724;">AGREED</span>'
+                    : '<span class="status-badge">NEW LEAD</span>';
                 return `
                     <tr>
                         <td>${new Date(l.createdAt).toLocaleDateString()}</td>
                         <td><strong>${l.name}</strong></td>
                         <td>${l.phone}</td>
                         <td>${l.location}</td>
+                        <td>${l.position || '-'}</td>
                         <td>${l.adsBudget || '-'}</td>
+                        <td>${l.pilgrimsCount || '-'}</td>
+                        <td>${l.obstacles || '-'}</td>
+                        <td>${l.expectedFeatures || '-'}</td>
                         <td>${l.meetingTime || '-'}</td>
+                        <td>${agreedBadge}</td>
                         <td>
                             <a href="https://wa.me/${waNumber}?text=Assalamu'alaikum%20${encodeURIComponent(l.name)},%20saya%20dari%20Munira%20CRM..." 
                                target="_blank" 
@@ -186,7 +208,7 @@
                                 <i class="fab fa-whatsapp"></i> Chat
                             </a>
                         </td>
-                        <td><span class="status-badge">NEW LEAD</span></td>
+                        <td>${statusBadge}</td>
                     </tr>
                 `;
             }).join('');
