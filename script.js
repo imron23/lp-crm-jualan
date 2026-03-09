@@ -103,6 +103,7 @@ window.addEventListener('DOMContentLoaded', () => {
     setLanguage(savedLang);
     const savedTheme = localStorage.getItem('munira-theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     setTheme(savedTheme);
+    updateMainForm();
 });
 
 // Theme Engine
@@ -220,9 +221,13 @@ function updateModalForm() {
         const progress = ((mCurrentStep + 1) / mSteps.length) * 100;
         mProgressBar.style.width = `${progress}%`;
     }
+    const isSuccessStep = mCurrentStep === mSteps.length - 1;
+    const footer = document.querySelector('.modal-form-footer');
+    if (footer) footer.style.display = isSuccessStep ? 'none' : 'flex';
+
     if (mPrevBtn) mPrevBtn.style.display = mCurrentStep === 0 ? 'none' : 'block';
-    if (mNextBtn) mNextBtn.style.display = mCurrentStep === mSteps.length - 1 ? 'none' : 'block';
-    if (mSubmitBtn) mSubmitBtn.style.display = mCurrentStep === mSteps.length - 1 ? 'block' : 'none';
+    if (mNextBtn) mNextBtn.style.display = (mCurrentStep === mSteps.length - 2) ? 'none' : 'block';
+    if (mSubmitBtn) mSubmitBtn.style.display = (mCurrentStep === mSteps.length - 2) ? 'block' : 'none';
 }
 
 function resetConsultForm() {
@@ -232,6 +237,15 @@ function resetConsultForm() {
 }
 
 mNextBtn?.addEventListener('click', () => {
+    // Validate current step
+    const currentStepFields = mSteps[mCurrentStep].querySelectorAll('input, select, textarea');
+    let isValid = true;
+    currentStepFields.forEach(field => {
+        if (!field.reportValidity()) isValid = false;
+    });
+
+    if (!isValid) return;
+
     if (mCurrentStep < mSteps.length - 1) {
         mCurrentStep++;
         updateModalForm();
@@ -273,20 +287,8 @@ document.getElementById('consultForm')?.addEventListener('submit', async (e) => 
 
         if (response.ok) {
             celebrateBestValue();
-            if (btn) {
-                btn.innerHTML = '<i class="fas fa-check"></i> Success!';
-                btn.style.background = '#10b981';
-            }
-            setTimeout(() => {
-                document.getElementById('consultModal')?.classList.remove('active');
-                document.body.style.overflow = '';
-                if (btn) {
-                    btn.innerHTML = originalText;
-                    btn.disabled = false;
-                    btn.style.background = '';
-                }
-                resetConsultForm();
-            }, 2000);
+            mCurrentStep++;
+            updateModalForm();
         } else {
             throw new Error('Failed to submit lead');
         }
@@ -301,6 +303,102 @@ document.getElementById('consultForm')?.addEventListener('submit', async (e) => 
                 btn.style.background = '';
             }, 2000);
         }
+    }
+});
+
+// Main Page Progressive Form Logic (realMuniraForm)
+const mainNextBtn = document.getElementById('nextBtn');
+const mainPrevBtn = document.getElementById('prevBtn');
+const mainForm = document.getElementById('realMuniraForm');
+const mainSteps = document.querySelectorAll('#realMuniraForm .form-step');
+const mainStepNums = document.querySelectorAll('.form-progress-bar .step-num');
+const mainStepLines = document.querySelectorAll('.form-progress-bar .step-line');
+let mainCurrentStep = 0;
+
+function updateMainForm() {
+    mainSteps.forEach((s, i) => s.style.display = i === mainCurrentStep ? 'block' : 'none');
+
+    // Update Progress UI
+    mainStepNums.forEach((num, i) => {
+        if (i <= mainCurrentStep) num.classList.add('active');
+        else num.classList.remove('active');
+    });
+    mainStepLines.forEach((line, i) => {
+        if (i < mainCurrentStep) line.classList.add('active');
+        else line.classList.remove('active');
+    });
+
+    if (mainPrevBtn) {
+        mainPrevBtn.style.display = (mainCurrentStep === 0 || mainCurrentStep === mainSteps.length - 1) ? 'none' : 'block';
+    }
+    if (mainNextBtn) {
+        const isLastStep = mainCurrentStep === mainSteps.length - 2;
+        const isSuccess = mainCurrentStep === mainSteps.length - 1;
+
+        if (isSuccess) {
+            mainNextBtn.style.display = 'none';
+        } else {
+            mainNextBtn.style.display = 'block';
+            mainNextBtn.innerText = isLastStep ? 'Daftar Sekarang' : (localStorage.getItem('munira-lang') === 'en' ? 'Next' : 'Selanjutnya');
+        }
+    }
+}
+
+mainNextBtn?.addEventListener('click', async () => {
+    // Validate current step before moving
+    const currentStepFields = mainSteps[mainCurrentStep].querySelectorAll('input, select, textarea');
+    let isValid = true;
+    currentStepFields.forEach(field => {
+        if (!field.reportValidity()) isValid = false;
+    });
+
+    if (!isValid) return;
+
+    // If it's the step before success, submit the form
+    if (mainCurrentStep === mainSteps.length - 2) {
+        const originalText = mainNextBtn.innerHTML;
+        mainNextBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Saving...';
+        mainNextBtn.disabled = true;
+
+        const formData = new FormData(mainForm);
+        const data = Object.fromEntries(formData.entries());
+        data.obstacles = formData.getAll('obstacles');
+
+        try {
+            const res = await fetch('/api/leads', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+            });
+
+            if (res.ok) {
+                celebrateBestValue();
+                mainCurrentStep++;
+                updateMainForm();
+                document.getElementById('formNav').style.display = 'none';
+            } else {
+                throw new Error('Failed to submit');
+            }
+        } catch (err) {
+            console.error('Submit error:', err);
+            mainNextBtn.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Error';
+            setTimeout(() => {
+                mainNextBtn.innerHTML = originalText;
+                mainNextBtn.disabled = false;
+            }, 2000);
+        }
+    } else if (mainCurrentStep < mainSteps.length - 2) {
+        mainCurrentStep++;
+        updateMainForm();
+        gsap.fromTo(mainSteps[mainCurrentStep], { opacity: 0, x: 30 }, { opacity: 1, x: 0, duration: 0.5 });
+    }
+});
+
+mainPrevBtn?.addEventListener('click', () => {
+    if (mainCurrentStep > 0) {
+        mainCurrentStep--;
+        updateMainForm();
+        gsap.fromTo(mainSteps[mainCurrentStep], { opacity: 0, x: -30 }, { opacity: 1, x: 0, duration: 0.5 });
     }
 });
 
@@ -393,6 +491,20 @@ document.querySelectorAll('.btn-glow, .apple-btn').forEach(btn => {
     });
     btn.addEventListener('mouseleave', () => {
         btn.style.transform = "translate(0, 0)";
+    });
+});
+
+// 2.5 Fancy Checkbox Animation
+document.querySelectorAll('.check-item-fancy input').forEach(input => {
+    input.addEventListener('change', () => {
+        const parent = input.closest('.check-item-fancy');
+        if (input.checked) {
+            gsap.fromTo(parent, { scale: 0.95 }, { scale: 1, duration: 0.4, ease: "elastic.out(1, 0.3)" });
+            // Add a subtle glow pulse
+            gsap.to(parent, { boxShadow: "0 0 20px var(--primary-glow)", duration: 0.2 });
+        } else {
+            gsap.to(parent, { boxShadow: "0 10px 30px rgba(0,0,0,0.03)", duration: 0.2 });
+        }
     });
 });
 

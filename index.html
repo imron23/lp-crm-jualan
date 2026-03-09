@@ -271,59 +271,104 @@
         </section>
 
         <!-- SECTION: SECRET TECH ACCORDION (For those who want to know more) -->
-        <section class="section" style="padding-top: 0; position: relative; z-index: 20;">
-            <div class="container">
-                <div class="faq-item reveal faq-advanced-item">
+        <section class="section science-premium-section" id="science">
+            <div class="science-grid-pattern"></div>
+            <div class="science-glow-1"></div>
+            <div class="science-glow-2"></div>
+
+            <div class="container" style="position: relative; z-index: 5;">
+                <div class="faq-item reveal faq-advanced-item premium-science-outer">
                     <div class="faq-question">
-                        <h3 data-i18n="sci_deep_t" style="margin: 0; color: var(--primary);">Lihat Rahasia Teknologi
-                            Kami (Opsional)</h3>
-                        <i class="fas fa-chevron-down" style="color: var(--primary);"></i>
+                        <div style="display: flex; align-items: center; gap: 15px;">
+                            <div class="tech-icon-pulse">
+                                <i class="fas fa-microchip"></i>
+                            </div>
+                            <h3 data-i18n="sci_deep_t" style="margin: 0; color: white;">Arsitektur & Keamanan Data
+                                (Advanced)</h3>
+                        </div>
+                        <i class="fas fa-chevron-down" style="color: var(--secondary);"></i>
                     </div>
                     <div class="faq-answer" style="padding: 0;">
-                        <div style="padding: 40px;">
+                        <div style="padding: 60px 40px;">
                             <p data-i18n="sci_deep_s"
-                                style="margin-bottom: 40px; text-align: center; font-style: italic;">Kami menggunakan
-                                teknologi tercanggih untuk memastikan kenyamanan Anda.</p>
+                                style="margin-bottom: 50px; text-align: center; font-size: 1.1rem; color: rgba(255,255,255,0.7); max-width: 800px; margin-left: auto; margin-right: auto;">
+                                Kami menggunakan teknologi modern tercanggih untuk memastikan kenyamanan & keamanan data
+                                travel Anda setingkat perbankan digital.
+                            </p>
 
                             <!-- Simplified Sci Grid -->
                             <div class="grid-3">
-                                <div class="apple-card reveal">
-                                    <i class="fas fa-microchip" style="color: var(--primary); font-size: 2rem;"></i>
-                                    <h4 data-i18n="sci_go_t">Bahasa Pemrograman Tercepat</h4>
-                                    <p data-i18n="sci_go_d">Menggunakan teknologi yang sama dengan Google untuk akses
-                                        tanpa lemot.</p>
+                                <div class="apple-card reveal tech-glass-card">
+                                    <div class="card-glow"></div>
+                                    <i class="fas fa-bolt"
+                                        style="color: var(--secondary); font-size: 2.5rem; margin-bottom: 25px;"></i>
+                                    <h4 data-i18n="sci_go_t">Golang (Go) Engine</h4>
+                                    <p data-i18n="sci_go_d" style="color: rgba(255,255,255,0.6);">Bahasa pemrograman
+                                        level tinggi yang digunakan Google untuk kecepatan akses maksimal tanpa lemot.
+                                    </p>
                                 </div>
-                                <div class="apple-card reveal">
-                                    <i class="fas fa-vault" style="color: var(--secondary); font-size: 2rem;"></i>
-                                    <h4 data-i18n="sci_brankas_t">Brankas Data Digital</h4>
-                                    <p data-i18n="sci_brankas_d">Penyimpanan yang fleksibel namun sangat aman dari
-                                        pencurian data.</p>
+                                <div class="apple-card reveal tech-glass-card">
+                                    <div class="card-glow"></div>
+                                    <i class="fas fa-shield-halved"
+                                        style="color: #60a5fa; font-size: 2.5rem; margin-bottom: 25px;"></i>
+                                    <h4 data-i18n="sci_brankas_t">PostgreSQL & JSONB</h4>
+                                    <p data-i18n="sci_brankas_d" style="color: rgba(255,255,255,0.6);">Penyimpanan data
+                                        yang sangat fleksibel namun memiliki keamanan setingkat brankas bank.</p>
                                 </div>
-                                <div class="apple-card reveal">
-                                    <i class="fas fa-feather-alt" style="color: #f59e0b; font-size: 2rem;"></i>
-                                    <h4 data-i18n="sci_vanilla_t">Desain Sangat Ringan</h4>
-                                    <p data-i18n="sci_vanilla_d">Web dirancang agar tetap lancar di HP dengan sinyal
-                                        lemah sekalipun.</p>
+                                <div class="apple-card reveal tech-glass-card">
+                                    <div class="card-glow"></div>
+                                    <i class="fas fa-leaf"
+                                        style="color: #34d399; font-size: 2.5rem; margin-bottom: 25px;"></i>
+                                    <h4 data-i18n="sci_vanilla_t">Vanilla Architecture</h4>
+                                    <p data-i18n="sci_vanilla_d" style="color: rgba(255,255,255,0.6);">Tanpa beban
+                                        tambahan (WP) sehingga web tetap sangat ringan di HP jadul sekalipun.</p>
                                 </div>
                             </div>
 
                             <!-- Emotional Science -->
                             <div
-                                style="margin-top: 50px; border-top: 1px solid var(--border-light); padding-top: 40px;">
-                                <h4 style="text-align: center; margin-bottom: 30px;" data-i18n="sci_psych_t">Psikologi
-                                    Penjualan (Sangat Penting)</h4>
+                                style="margin-top: 80px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 60px;">
+                                <h4 style="text-align: center; margin-bottom: 40px; color: var(--secondary); letter-spacing: 2px;"
+                                    data-i18n="sci_psych_t">PSIKOLOGI PENJUALAN (SANGAT PENTING)</h4>
                                 <div class="grid-3">
-                                    <div class="emotion-card">
-                                        <h5 data-i18n="sci_emo_1_t">Sentuhan Spiritual</h5>
-                                        <p data-i18n="sci_emo_1_d">Menyentuh kerinduan jamaah akan Baitullah.</p>
+                                    <div class="emotion-card premium-emo">
+                                        <div class="emo-icon-box">
+                                            <i class="fas fa-pray"></i>
+                                        </div>
+                                        <div>
+                                            <h5 data-i18n="sci_emo_1_t"
+                                                style="color: white; font-size: 1.1rem; margin-bottom: 8px;">Sentuhan
+                                                Spiritual</h5>
+                                            <p data-i18n="sci_emo_1_d"
+                                                style="color: rgba(255,255,255,0.5); font-size: 0.9rem;">Menonjolkan
+                                                kerinduan akan Baitullah untuk menggerakkan niat jamaah.</p>
+                                        </div>
                                     </div>
-                                    <div class="emotion-card">
-                                        <h5 data-i18n="sci_emo_2_t">Fokus Solusi</h5>
-                                        <p data-i18n="sci_emo_2_d">Menekankan pada kemudahan ibadah dan fasilitas.</p>
+                                    <div class="emotion-card premium-emo">
+                                        <div class="emo-icon-box">
+                                            <i class="fas fa-hotel"></i>
+                                        </div>
+                                        <div>
+                                            <h5 data-i18n="sci_emo_2_t"
+                                                style="color: white; font-size: 1.1rem; margin-bottom: 8px;">Fokus
+                                                Solusi</h5>
+                                            <p data-i18n="sci_emo_2_d"
+                                                style="color: rgba(255,255,255,0.5); font-size: 0.9rem;">Menekankan pada
+                                                fasilitas hotel dekat dan kemudahan ibadah.</p>
+                                        </div>
                                     </div>
-                                    <div class="emotion-card">
-                                        <h5 data-i18n="sci_emo_3_t">Urgensi Cerdas</h5>
-                                        <p data-i18n="sci_emo_3_d">Mendorong jamaah segera mengambil keputusan.</p>
+                                    <div class="emotion-card premium-emo">
+                                        <div class="emo-icon-box">
+                                            <i class="fas fa-hourglass-half"></i>
+                                        </div>
+                                        <div>
+                                            <h5 data-i18n="sci_emo_3_t"
+                                                style="color: white; font-size: 1.1rem; margin-bottom: 8px;">
+                                                Keterbatasan Slot</h5>
+                                            <p data-i18n="sci_emo_3_d"
+                                                style="color: rgba(255,255,255,0.5); font-size: 0.9rem;">Membangun rasa
+                                                butuh agar jamaah segera mengambil keputusan.</p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -742,14 +787,18 @@
                     <div class="form-progress-bar"
                         style="display: flex; gap: 15px; margin-bottom: 50px; position: relative;">
                         <div class="step-num active">1</div>
-                        <div class="step-line active"
-                            style="flex: 1; height: 4px; background: var(--primary); border-radius: 10px; align-self: center;">
+                        <div class="step-line"
+                            style="flex: 1; height: 4px; background: var(--border-light); border-radius: 10px; align-self: center;">
                         </div>
                         <div class="step-num">2</div>
                         <div class="step-line"
                             style="flex: 1; height: 4px; background: var(--border-light); border-radius: 10px; align-self: center;">
                         </div>
                         <div class="step-num">3</div>
+                        <div class="step-line"
+                            style="flex: 1; height: 4px; background: var(--border-light); border-radius: 10px; align-self: center;">
+                        </div>
+                        <div class="step-num">4</div>
                     </div>
 
                     <form id="realMuniraForm">
@@ -764,27 +813,65 @@
                                     <label data-i18n="form_name_l"
                                         style="display: block; margin-bottom: 8px; font-size: 0.9rem; font-weight: 600;">Nama
                                         Lengkap</label>
-                                    <input type="text" id="eNama" placeholder="Contoh: Budi Santoso">
+                                    <input type="text" id="eNama" name="name" required
+                                        placeholder="Contoh: Budi Santoso">
                                 </div>
                                 <div class="input-group">
                                     <label data-i18n="form_loc_l"
                                         style="display: block; margin-bottom: 8px; font-size: 0.9rem; font-weight: 600;">Kecamatan
                                         Domisili</label>
-                                    <input type="text" id="eDomisili" placeholder="Ketik 3 huruf nama kecamatan...">
+                                    <input type="text" id="eDomisili" name="location" required
+                                        placeholder="Ketik 3 huruf nama kecamatan...">
                                     <div id="eDomisiliDropdown" class="ac-dropdown"></div>
                                 </div>
                                 <div class="input-group">
                                     <label data-i18n="form_wa_l"
                                         style="display: block; margin-bottom: 8px; font-size: 0.9rem; font-weight: 600;">Nomor
                                         WhatsApp</label>
-                                    <input type="tel" id="eWA" placeholder="081234567890">
+                                    <input type="tel" id="eWA" name="phone" required placeholder="081234567890">
+                                </div>
+                                <div class="input-group">
+                                    <label data-i18n="form_pos_l"
+                                        style="display: block; margin-bottom: 8px; font-size: 0.9rem; font-weight: 600;">Posisi
+                                        Anda</label>
+                                    <select id="ePosisi" name="position">
+                                        <option data-i18n="form_pos_o1" value="Pemilik travel">Pemilik travel</option>
+                                        <option data-i18n="form_pos_o2" value="Manager/GM travel">Manager/GM travel
+                                        </option>
+                                        <option data-i18n="form_pos_o3" value="Staff operational">Staff operational
+                                        </option>
+                                        <option data-i18n="form_pos_o4" value="Sales">Sales</option>
+                                        <option data-i18n="form_pos_o5" value="Lainnya">Lainnya</option>
+                                    </select>
                                 </div>
                             </div>
                         </div>
                         <div class="form-step" id="step2" style="display: none;">
                             <span data-i18n="form_s2_label"
                                 style="font-size: 0.8rem; color: var(--primary); font-weight: 700; text-transform: uppercase;">Langkah
-                                2: Rencana Perjalanan</span>
+                                2: Analisis Kebutuhan</span>
+                            <h4 data-i18n="form_kendala_l" style="margin: 15px 0 25px; font-size: 1.5rem;">Masalah Saat
+                                Ini</h4>
+                            <div class="check-grid" style="display: grid; gap: 15px;">
+                                <label class="check-item-fancy">
+                                    <input type="checkbox" name="obstacles" value="dishonest">
+                                    <span data-i18n="form_kendala_o6">Karyawan tidak jujur</span>
+                                </label>
+                                <label class="check-item-fancy">
+                                    <input type="checkbox" name="obstacles" value="difficult_monitoring">
+                                    <span data-i18n="form_kendala_o7">Sulit monitoring team</span>
+                                </label>
+                                <label class="check-item-fancy">
+                                    <input type="checkbox" name="obstacles" value="low_conversion">
+                                    <span data-i18n="form_kendala_o8">Tidak tau bagaimana membuat website konversi
+                                        tinggi dengan framework yang sesuai</span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-step" id="step3" style="display: none;">
+                            <span
+                                style="font-size: 0.8rem; color: var(--primary); font-weight: 700; text-transform: uppercase;">Langkah
+                                3: Rencana Perjalanan</span>
                             <h4 data-i18n="form_s2_title" style="margin: 15px 0 10px; font-size: 1.5rem;">Detail
                                 Keberangkatan</h4>
                             <div style="display: grid; gap: 20px;">
@@ -792,7 +879,7 @@
                                     <label data-i18n="form_exp_l"
                                         style="display: block; margin-bottom: 8px; font-size: 0.9rem; font-weight: 600;">Pernah
                                         Umrah?</label>
-                                    <select id="ePengalaman">
+                                    <select id="ePengalaman" name="experience">
                                         <option data-i18n="form_exp_o1" value="Pernah">Pernah</option>
                                         <option data-i18n="form_exp_o2" value="Belum">Belum</option>
                                     </select>
@@ -801,29 +888,44 @@
                                     <label data-i18n="form_qty_l"
                                         style="display: block; margin-bottom: 8px; font-size: 0.9rem; font-weight: 600;">Jumlah
                                         Peserta</label>
-                                    <input type="number" id="eJumlah" placeholder="Contoh: 4">
+                                    <input type="number" id="eJumlah" name="pilgrims_count" required
+                                        placeholder="Contoh: 4">
                                 </div>
                                 <div id="eUsiaContainer"></div>
                             </div>
                         </div>
-                        <div class="form-step" id="step3" style="display: none;">
+                        <div class="form-step" id="step4" style="display: none;">
+                            <span
+                                style="font-size: 0.8rem; color: var(--primary); font-weight: 700; text-transform: uppercase;">Langkah
+                                4: Pilihan Paket</span>
                             <h4 data-i18n="form_s3_title" style="margin: 15px 0 25px; font-size: 1.5rem;">Pilihan
                                 Paket
                             </h4>
-                            <select id="ePaket">
+                            <select id="ePaket" name="package">
                                 <option value="Gold">Gold Class</option>
                                 <option value="Platinum">Platinum Class</option>
                             </select>
                         </div>
                         <div class="form-step" id="stepSuccess"
                             style="display: none; text-align: center; padding: 40px 0;">
-                            <div class="user-avatar" style="margin: 0 auto 30px; width: 80px; height: 80px;"><i
-                                    class="fas fa-check"></i></div>
-                            <h3 data-i18n="form_succ_t">Pendaftaran Berhasil!</h3>
-                            <p data-i18n="form_succ_d">Konsultan kami akan segera menghubungi Anda melalui WhatsApp.
-                            </p>
-                            <button type="button" onclick="location.reload()" class="apple-btn"
-                                data-i18n="form_succ_b">Kembali</button>
+                            <div class="waiting-animation">
+                                <div class="waiting-pulse"></div>
+                                <div class="waiting-pulse"></div>
+                                <div class="waiting-pulse"></div>
+                                <div class="waiting-circle"><i class="fas fa-check"></i></div>
+                            </div>
+                            <div class="success-content">
+                                <h3 data-i18n="form_succ_t" style="font-size: 2rem; margin-bottom: 10px;">Terima Kasih!
+                                </h3>
+                                <p data-i18n="form_succ_d"
+                                    style="font-size: 1.2rem; color: var(--text-gray); margin-bottom: 30px;">
+                                    Permintaan Anda telah kami terima.<br>
+                                    <strong>Konsultan kami akan menghubungi Anda kurang dari 24 jam.</strong><br>
+                                    Sampai ketemu nanti!
+                                </p>
+                                <button type="button" onclick="location.reload()" class="apple-btn"
+                                    data-i18n="form_succ_b">Kembali</button>
+                            </div>
                         </div>
                     </form>
                     <div id="formNav"
@@ -992,7 +1094,7 @@
                     <div class="comp-header">
                         <i class="fas fa-users-slash"></i>
                         <h3>Model Konvensional</h3>
-                        <p>(3 Staff: Admin, CS, & Ads Manager)</p>
+                        <p>(3 Staff: Admin, CS, & Admin Website)</p>
                     </div>
                     <div class="comp-body">
                         <div class="comp-item">
@@ -1076,6 +1178,11 @@
             <div style="text-align: center; margin-bottom: 60px;">
                 <span class="section-label" data-i18n="label_pricing">Pricing</span>
                 <h2 class="section-title reveal" data-i18n="price_title">Nilai Berlimpah, Harga Terjangkau.</h2>
+                <p class="reveal" data-i18n="price_marketing_note"
+                    style="max-width: 700px; margin: 0 auto 30px; color: var(--text-gray); font-size: 1.1rem; line-height: 1.6;">
+                    Investasi super hemat karena sistem bekerja otomatis 24/7 tanpa libur. Sudah termasuk pembuat
+                    Landing Page konversi tinggi (Senilai Rp 500.000 per LP)!
+                </p>
                 <div class="scarcity-badge reveal" data-i18n="scarcity_limit"
                     style="display: inline-block; padding: 10px 20px; background: rgba(255, 59, 48, 0.1); color: #ff3b30; border-radius: 50px; font-weight: 700; font-size: 0.9rem; margin-top: 15px; border: 1px solid rgba(255, 59, 48, 0.2);">
                     ⚠️ Slot Terbatas: Hanya bersisa 2 dari 10 slot Travel & 1 dari 4 slot Ads Premium bulan ini.
@@ -1085,18 +1192,24 @@
                 <!-- Monthly -->
                 <div class="price-box reveal" style="display: flex; flex-direction: column;">
                     <h3 data-i18n="price_3_title">Paket Bulanan</h3>
+                    <div class="price-old">Rp 5.000.000</div>
                     <div class="price-main">2.5jt<small>/bln</small></div>
+                    <div
+                        style="font-size: 0.85rem; color: var(--secondary); font-weight: 600; margin-top: -10px; margin-bottom: 20px;">
+                        Otomasi 24/7 - Tanpa Libur</div>
                     <div
                         style="margin-bottom: 20px; font-weight: 700; color: var(--primary); font-size: 0.8rem; letter-spacing: 1px;">
                         COMMITMENT-FREE</div>
                     <ul class="price-features" style="flex-grow: 1; text-align: left; margin-bottom: 30px;">
-                        <li><i class="fas fa-check-circle"></i> Dashboard</li>
-                        <li><i class="fas fa-check-circle"></i> High-Speed LP</li>
-                        <li><i class="fas fa-check-circle"></i> Free 3 LP Powerful High Conversion & Speed</li>
-                        <li><i class="fas fa-check-circle"></i> Security Enterprise Level (Anti SQL, XSS, dll)</li>
-                        <li><i class="fas fa-check-circle"></i> Free Server</li>
-                        <li><i class="fas fa-check-circle"></i> AI Token</li>
-                        <li><i class="fas fa-check-circle"></i> Karyawan yg setara kerja 24jam</li>
+                        <li data-i18n="price_f1"><i class="fas fa-check-circle"></i> Dashboard</li>
+                        <li data-i18n="price_f2"><i class="fas fa-check-circle"></i> High-Speed LP</li>
+                        <li data-i18n="price_f3_monthly"><i class="fas fa-check-circle"></i> Free 1 LP Powerful High
+                            Conversion & Speed</li>
+                        <li data-i18n="price_f4"><i class="fas fa-check-circle"></i> Security Enterprise Level (Anti
+                            SQL, XSS, dll)</li>
+                        <li data-i18n="price_f5"><i class="fas fa-check-circle"></i> Free Server</li>
+                        <li data-i18n="price_f6"><i class="fas fa-check-circle"></i> AI Token</li>
+                        <li data-i18n="price_f7"><i class="fas fa-check-circle"></i> Karyawan yg setara kerja 24jam</li>
                     </ul>
                     <a href="#action" class="apple-btn" style="width: 100%;" data-i18n="price_btn">Coba Dulu</a>
                 </div>
@@ -1104,26 +1217,37 @@
                 <!-- Annual (Featured) -->
                 <div class="price-box featured reveal"
                     style="display: flex; flex-direction: column; transform: scale(1.1); background: #05070a; color: white;">
-                    <span class="price-badge" style="background: #ff3b30; color: white;">BEST VALUE - SAVE
-                        10jt</span>
+                    <span class="price-badge" style="background: #ff3b30; color: white;"
+                        data-i18n="price_tahunan_save">BEST VALUE - SAVE
+                        10jt + Extra 1m Discount</span>
                     <h3 style="color: white;" data-i18n="price_2_title">Paket Tahunan</h3>
-                    <div class="price-old" style="color: #666;">Rp 30.000.000</div>
+                    <div class="price-old" style="color: #ff3b30; text-decoration: line-through;">Rp 30.000.000</div>
                     <div class="price-main" style="color: var(--secondary);">20jt<small
                             style="color: #666;">/thn</small></div>
+                    <div
+                        style="font-size: 0.85rem; color: var(--secondary); font-weight: 600; margin-top: -10px; margin-bottom: 20px;">
+                        Otomasi 24/7 - Tanpa Libur</div>
                     <div
                         style="margin-bottom: 20px; font-weight: 800; color: var(--secondary); font-size: 0.8rem; letter-spacing: 2px;">
                         GANTIKAN 3 KARYAWAN</div>
                     <ul class="price-features"
                         style="flex-grow: 1; text-align: left; margin-bottom: 30px; color: rgba(255,255,255,0.8); border-top-color: rgba(255,255,255,0.1);">
-                        <li><i class="fas fa-check-circle" style="color: var(--secondary);"></i> Dashboard</li>
-                        <li><i class="fas fa-check-circle" style="color: var(--secondary);"></i> High-Speed LP</li>
-                        <li><i class="fas fa-check-circle" style="color: var(--secondary);"></i> Free 3 LP Powerful High
+                        <li data-i18n="price_f1"><i class="fas fa-check-circle" style="color: var(--secondary);"></i>
+                            Dashboard</li>
+                        <li data-i18n="price_f2"><i class="fas fa-check-circle" style="color: var(--secondary);"></i>
+                            High-Speed LP</li>
+                        <li data-i18n="price_f3_yearly"><i class="fas fa-check-circle"
+                                style="color: var(--secondary);"></i> Free 3 LP Powerful High
                             Conversion & Speed</li>
-                        <li><i class="fas fa-check-circle" style="color: var(--secondary);"></i> Security Enterprise
+                        <li data-i18n="price_f4"><i class="fas fa-check-circle" style="color: var(--secondary);"></i>
+                            Security Enterprise
                             Level (Anti SQL, XSS, dll)</li>
-                        <li><i class="fas fa-check-circle" style="color: var(--secondary);"></i> Free Server</li>
-                        <li><i class="fas fa-check-circle" style="color: var(--secondary);"></i> AI Token</li>
-                        <li><i class="fas fa-check-circle" style="color: var(--secondary);"></i> Karyawan yg setara
+                        <li data-i18n="price_f5"><i class="fas fa-check-circle" style="color: var(--secondary);"></i>
+                            Free Server</li>
+                        <li data-i18n="price_f6"><i class="fas fa-check-circle" style="color: var(--secondary);"></i> AI
+                            Token</li>
+                        <li data-i18n="price_f7"><i class="fas fa-check-circle" style="color: var(--secondary);"></i>
+                            Karyawan yg setara
                             kerja 24jam</li>
                     </ul>
                     <a href="#action" class="btn-glow" style="width: 100%;" data-i18n="price_btn_best">Amankan Slot
@@ -1134,19 +1258,24 @@
                 <div class="price-box reveal" style="display: flex; flex-direction: column;">
                     <span class="price-badge">HEMAT Rp 1jt</span>
                     <h3 data-i18n="price_1_title">Paket 6 Bulan</h3>
-                    <div class="price-old">Rp 15.000.000</div>
+                    <div class="price-old" style="color: #ff3b30; text-decoration: line-through;">Rp 15.000.000</div>
                     <div class="price-main">14jt<small>/6 bln</small></div>
+                    <div
+                        style="font-size: 0.85rem; color: var(--secondary); font-weight: 600; margin-top: -10px; margin-bottom: 20px;">
+                        Otomasi 24/7 - Tanpa Libur</div>
                     <div
                         style="margin-bottom: 20px; font-weight: 700; color: var(--primary); font-size: 0.8rem; letter-spacing: 1px;">
                         MID-TERM PLAN</div>
                     <ul class="price-features" style="flex-grow: 1; text-align: left; margin-bottom: 30px;">
-                        <li><i class="fas fa-check-circle"></i> Dashboard</li>
-                        <li><i class="fas fa-check-circle"></i> High-Speed LP</li>
-                        <li><i class="fas fa-check-circle"></i> Free 3 LP Powerful High Conversion & Speed</li>
-                        <li><i class="fas fa-check-circle"></i> Security Enterprise Level (Anti SQL, XSS, dll)</li>
-                        <li><i class="fas fa-check-circle"></i> Free Server</li>
-                        <li><i class="fas fa-check-circle"></i> AI Token</li>
-                        <li><i class="fas fa-check-circle"></i> Karyawan yg setara kerja 24jam</li>
+                        <li data-i18n="price_f1"><i class="fas fa-check-circle"></i> Dashboard</li>
+                        <li data-i18n="price_f2"><i class="fas fa-check-circle"></i> High-Speed LP</li>
+                        <li data-i18n="price_f3"><i class="fas fa-check-circle"></i> Free 3 LP Powerful High Conversion
+                            & Speed</li>
+                        <li data-i18n="price_f4"><i class="fas fa-check-circle"></i> Security Enterprise Level (Anti
+                            SQL, XSS, dll)</li>
+                        <li data-i18n="price_f5"><i class="fas fa-check-circle"></i> Free Server</li>
+                        <li data-i18n="price_f6"><i class="fas fa-check-circle"></i> AI Token</li>
+                        <li data-i18n="price_f7"><i class="fas fa-check-circle"></i> Karyawan yg setara kerja 24jam</li>
                     </ul>
                     <a href="#action" class="apple-btn" style="width: 100%;" data-i18n="price_btn">Amankan Paket</a>
                 </div>
@@ -1262,6 +1391,16 @@
                                 placeholder="Ketik 3 huruf nama kecamatan...">
                             <div id="consultLocDropdown" class="ac-dropdown"></div>
                         </div>
+                        <div class="input-group">
+                            <label data-i18n="form_pos_l">Posisi Anda</label>
+                            <select name="position">
+                                <option data-i18n="form_pos_o1" value="Pemilik travel">Pemilik travel</option>
+                                <option data-i18n="form_pos_o2" value="Manager/GM travel">Manager/GM travel</option>
+                                <option data-i18n="form_pos_o3" value="Staff operational">Staff operational</option>
+                                <option data-i18n="form_pos_o4" value="Sales">Sales</option>
+                                <option data-i18n="form_pos_o5" value="Lainnya">Lainnya</option>
+                            </select>
+                        </div>
                     </div>
 
                     <!-- Step 2: Bisnis -->
@@ -1278,7 +1417,7 @@
                         </div>
                         <div class="input-group">
                             <label data-i18n="form_jamaah_l">Banyaknya Jamaah Per Bulan</label>
-                            <input type="number" name="pilgrims_count" placeholder="Contoh: 50">
+                            <input type="number" name="pilgrims_count" required placeholder="Contoh: 50">
                         </div>
                     </div>
 
@@ -1307,6 +1446,19 @@
                             <label class="check-item">
                                 <input type="checkbox" name="obstacles" value="script_digital">
                                 <span data-i18n="form_kendala_o5">Script Digital / Automasi Belum Ada</span>
+                            </label>
+                            <label class="check-item">
+                                <input type="checkbox" name="obstacles" value="dishonest">
+                                <span data-i18n="form_kendala_o6">Karyawan tidak jujur</span>
+                            </label>
+                            <label class="check-item">
+                                <input type="checkbox" name="obstacles" value="difficult_monitoring">
+                                <span data-i18n="form_kendala_o7">Sulit monitoring team</span>
+                            </label>
+                            <label class="check-item">
+                                <input type="checkbox" name="obstacles" value="low_conversion">
+                                <span data-i18n="form_kendala_o8">Tidak tau bagaimana membuat website konversi tinggi
+                                    dengan framework yang sesuai</span>
                             </label>
                         </div>
                         <div class="input-group">
@@ -1340,6 +1492,28 @@
                             <span data-i18n="form_agree_l" style="font-size: 0.9rem; line-height: 1.4;">Saya setuju
                                 untuk dihubungi terkait janji temu dan demo produk.</span>
                         </label>
+                    </div>
+
+                    <!-- Step 5: Success -->
+                    <div class="m-form-step" data-step="5" style="display: none; text-align: center; padding: 40px 0;">
+                        <div class="waiting-animation">
+                            <div class="waiting-pulse"></div>
+                            <div class="waiting-pulse"></div>
+                            <div class="waiting-pulse"></div>
+                            <div class="waiting-circle"><i class="fas fa-check"></i></div>
+                        </div>
+                        <div class="success-content">
+                            <h3 data-i18n="form_succ_t" style="font-size: 1.8rem; margin-bottom: 15px;">Terima Kasih!
+                            </h3>
+                            <p data-i18n="form_succ_d"
+                                style="font-size: 1.1rem; color: var(--text-gray); margin-bottom: 30px;">
+                                Permintaan Anda telah kami terima.<br>
+                                <strong>Konsultan kami akan menghubungi Anda kurang dari 24 jam.</strong><br>
+                                Sampai ketemu nanti!
+                            </p>
+                            <button type="button" onclick="location.reload()" class="apple-btn"
+                                data-i18n="form_succ_b">Kembali</button>
+                        </div>
                     </div>
 
                     <div class="modal-form-footer"

@@ -15,6 +15,7 @@ model Lead {
   name            String
   phone           String
   location        String
+  position        String?
   adsBudget       String?
   pilgrimsCount   Int?
   obstacles       String?  // Stored as comma-separated string

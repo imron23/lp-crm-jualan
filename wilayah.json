@@ -1,0 +1,738 @@
+[
+    {
+        "kecamatan": "Gambir",
+        "kota": "Jakarta Pusat"
+    },
+    {
+        "kecamatan": "Senen",
+        "kota": "Jakarta Pusat"
+    },
+    {
+        "kecamatan": "Menteng",
+        "kota": "Jakarta Pusat"
+    },
+    {
+        "kecamatan": "Tanah Abang",
+        "kota": "Jakarta Pusat"
+    },
+    {
+        "kecamatan": "Cempaka Putih",
+        "kota": "Jakarta Pusat"
+    },
+    {
+        "kecamatan": "Kebayoran Baru",
+        "kota": "Jakarta Selatan"
+    },
+    {
+        "kecamatan": "Kebayoran Lama",
+        "kota": "Jakarta Selatan"
+    },
+    {
+        "kecamatan": "Cilandak",
+        "kota": "Jakarta Selatan"
+    },
+    {
+        "kecamatan": "Pasar Minggu",
+        "kota": "Jakarta Selatan"
+    },
+    {
+        "kecamatan": "Tebet",
+        "kota": "Jakarta Selatan"
+    },
+    {
+        "kecamatan": "Setiabudi",
+        "kota": "Jakarta Selatan"
+    },
+    {
+        "kecamatan": "Mampang Prapatan",
+        "kota": "Jakarta Selatan"
+    },
+    {
+        "kecamatan": "Jagakarsa",
+        "kota": "Jakarta Selatan"
+    },
+    {
+        "kecamatan": "Pancoran",
+        "kota": "Jakarta Selatan"
+    },
+    {
+        "kecamatan": "Pesanggrahan",
+        "kota": "Jakarta Selatan"
+    },
+    {
+        "kecamatan": "Kebon Jeruk",
+        "kota": "Jakarta Barat"
+    },
+    {
+        "kecamatan": "Palmerah",
+        "kota": "Jakarta Barat"
+    },
+    {
+        "kecamatan": "Grogol Petamburan",
+        "kota": "Jakarta Barat"
+    },
+    {
+        "kecamatan": "Kembangan",
+        "kota": "Jakarta Barat"
+    },
+    {
+        "kecamatan": "Cengkareng",
+        "kota": "Jakarta Barat"
+    },
+    {
+        "kecamatan": "Taman Sari",
+        "kota": "Jakarta Barat"
+    },
+    {
+        "kecamatan": "Tambora",
+        "kota": "Jakarta Barat"
+    },
+    {
+        "kecamatan": "Kalideres",
+        "kota": "Jakarta Barat"
+    },
+    {
+        "kecamatan": "Kelapa Gading",
+        "kota": "Jakarta Utara"
+    },
+    {
+        "kecamatan": "Tanjung Priok",
+        "kota": "Jakarta Utara"
+    },
+    {
+        "kecamatan": "Penjaringan",
+        "kota": "Jakarta Utara"
+    },
+    {
+        "kecamatan": "Cilincing",
+        "kota": "Jakarta Utara"
+    },
+    {
+        "kecamatan": "Pademangan",
+        "kota": "Jakarta Utara"
+    },
+    {
+        "kecamatan": "Koja",
+        "kota": "Jakarta Utara"
+    },
+    {
+        "kecamatan": "Pulo Gadung",
+        "kota": "Jakarta Timur"
+    },
+    {
+        "kecamatan": "Jatinegara",
+        "kota": "Jakarta Timur"
+    },
+    {
+        "kecamatan": "Ciracas",
+        "kota": "Jakarta Timur"
+    },
+    {
+        "kecamatan": "Cipayung",
+        "kota": "Jakarta Timur"
+    },
+    {
+        "kecamatan": "Cakung",
+        "kota": "Jakarta Timur"
+    },
+    {
+        "kecamatan": "Kramat Jati",
+        "kota": "Jakarta Timur"
+    },
+    {
+        "kecamatan": "Makasar",
+        "kota": "Jakarta Timur"
+    },
+    {
+        "kecamatan": "Matraman",
+        "kota": "Jakarta Timur"
+    },
+    {
+        "kecamatan": "Pasar Rebo",
+        "kota": "Jakarta Timur"
+    },
+    {
+        "kecamatan": "Duren Sawit",
+        "kota": "Jakarta Timur"
+    },
+    {
+        "kecamatan": "Bogor Barat",
+        "kota": "Bogor"
+    },
+    {
+        "kecamatan": "Bogor Selatan",
+        "kota": "Bogor"
+    },
+    {
+        "kecamatan": "Bogor Tengah",
+        "kota": "Bogor"
+    },
+    {
+        "kecamatan": "Bogor Timur",
+        "kota": "Bogor"
+    },
+    {
+        "kecamatan": "Bogor Utara",
+        "kota": "Bogor"
+    },
+    {
+        "kecamatan": "Tanah Sareal",
+        "kota": "Bogor"
+    },
+    {
+        "kecamatan": "Cibinong",
+        "kota": "Bogor"
+    },
+    {
+        "kecamatan": "Cileungsi",
+        "kota": "Bogor"
+    },
+    {
+        "kecamatan": "Gunung Putri",
+        "kota": "Bogor"
+    },
+    {
+        "kecamatan": "Bojong Gede",
+        "kota": "Bogor"
+    },
+    {
+        "kecamatan": "Margonda",
+        "kota": "Depok"
+    },
+    {
+        "kecamatan": "Beji",
+        "kota": "Depok"
+    },
+    {
+        "kecamatan": "Pancoran Mas",
+        "kota": "Depok"
+    },
+    {
+        "kecamatan": "Cimanggis",
+        "kota": "Depok"
+    },
+    {
+        "kecamatan": "Tapos",
+        "kota": "Depok"
+    },
+    {
+        "kecamatan": "Sawangan",
+        "kota": "Depok"
+    },
+    {
+        "kecamatan": "Limo",
+        "kota": "Depok"
+    },
+    {
+        "kecamatan": "Sukmajaya",
+        "kota": "Depok"
+    },
+    {
+        "kecamatan": "Cilodong",
+        "kota": "Depok"
+    },
+    {
+        "kecamatan": "Cinere",
+        "kota": "Depok"
+    },
+    {
+        "kecamatan": "Bojongsari",
+        "kota": "Depok"
+    },
+    {
+        "kecamatan": "Tangerang",
+        "kota": "Tangerang"
+    },
+    {
+        "kecamatan": "Cipondoh",
+        "kota": "Tangerang"
+    },
+    {
+        "kecamatan": "Ciledug",
+        "kota": "Tangerang"
+    },
+    {
+        "kecamatan": "Karawaci",
+        "kota": "Tangerang"
+    },
+    {
+        "kecamatan": "Periuk",
+        "kota": "Tangerang"
+    },
+    {
+        "kecamatan": "Jatiuwung",
+        "kota": "Tangerang"
+    },
+    {
+        "kecamatan": "Batuceper",
+        "kota": "Tangerang"
+    },
+    {
+        "kecamatan": "Benda",
+        "kota": "Tangerang"
+    },
+    {
+        "kecamatan": "Pinang",
+        "kota": "Tangerang"
+    },
+    {
+        "kecamatan": "Cibodas",
+        "kota": "Tangerang"
+    },
+    {
+        "kecamatan": "Larangan",
+        "kota": "Tangerang"
+    },
+    {
+        "kecamatan": "Karang Tengah",
+        "kota": "Tangerang"
+    },
+    {
+        "kecamatan": "Serpong",
+        "kota": "Tangerang Selatan"
+    },
+    {
+        "kecamatan": "Serpong Utara",
+        "kota": "Tangerang Selatan"
+    },
+    {
+        "kecamatan": "Pondok Aren",
+        "kota": "Tangerang Selatan"
+    },
+    {
+        "kecamatan": "Ciputat",
+        "kota": "Tangerang Selatan"
+    },
+    {
+        "kecamatan": "Ciputat Timur",
+        "kota": "Tangerang Selatan"
+    },
+    {
+        "kecamatan": "Pamulang",
+        "kota": "Tangerang Selatan"
+    },
+    {
+        "kecamatan": "Setu",
+        "kota": "Tangerang Selatan"
+    },
+    {
+        "kecamatan": "Bekasi Barat",
+        "kota": "Bekasi"
+    },
+    {
+        "kecamatan": "Bekasi Timur",
+        "kota": "Bekasi"
+    },
+    {
+        "kecamatan": "Bekasi Utara",
+        "kota": "Bekasi"
+    },
+    {
+        "kecamatan": "Bekasi Selatan",
+        "kota": "Bekasi"
+    },
+    {
+        "kecamatan": "Rawalumbu",
+        "kota": "Bekasi"
+    },
+    {
+        "kecamatan": "Bantar Gebang",
+        "kota": "Bekasi"
+    },
+    {
+        "kecamatan": "Pondok Gede",
+        "kota": "Bekasi"
+    },
+    {
+        "kecamatan": "Jatiasih",
+        "kota": "Bekasi"
+    },
+    {
+        "kecamatan": "Jatisampurna",
+        "kota": "Bekasi"
+    },
+    {
+        "kecamatan": "Mustika Jaya",
+        "kota": "Bekasi"
+    },
+    {
+        "kecamatan": "Medan Satria",
+        "kota": "Bekasi"
+    },
+    {
+        "kecamatan": "Bandung Wetan",
+        "kota": "Bandung"
+    },
+    {
+        "kecamatan": "Sumur Bandung",
+        "kota": "Bandung"
+    },
+    {
+        "kecamatan": "Coblong",
+        "kota": "Bandung"
+    },
+    {
+        "kecamatan": "Cibeunying Kaler",
+        "kota": "Bandung"
+    },
+    {
+        "kecamatan": "Cibeunying Kidul",
+        "kota": "Bandung"
+    },
+    {
+        "kecamatan": "Cicendo",
+        "kota": "Bandung"
+    },
+    {
+        "kecamatan": "Andir",
+        "kota": "Bandung"
+    },
+    {
+        "kecamatan": "Regol",
+        "kota": "Bandung"
+    },
+    {
+        "kecamatan": "Lengkong",
+        "kota": "Bandung"
+    },
+    {
+        "kecamatan": "Batununggal",
+        "kota": "Bandung"
+    },
+    {
+        "kecamatan": "Kiaracondong",
+        "kota": "Bandung"
+    },
+    {
+        "kecamatan": "Arcamanik",
+        "kota": "Bandung"
+    },
+    {
+        "kecamatan": "Antapani",
+        "kota": "Bandung"
+    },
+    {
+        "kecamatan": "Mandalajati",
+        "kota": "Bandung"
+    },
+    {
+        "kecamatan": "Ujung Berung",
+        "kota": "Bandung"
+    },
+    {
+        "kecamatan": "Cibiru",
+        "kota": "Bandung"
+    },
+    {
+        "kecamatan": "Panyileukan",
+        "kota": "Bandung"
+    },
+    {
+        "kecamatan": "Gedebage",
+        "kota": "Bandung"
+    },
+    {
+        "kecamatan": "Rancasari",
+        "kota": "Bandung"
+    },
+    {
+        "kecamatan": "Buahbatu",
+        "kota": "Bandung"
+    },
+    {
+        "kecamatan": "Bandung Kidul",
+        "kota": "Bandung"
+    },
+    {
+        "kecamatan": "Bandung Kulon",
+        "kota": "Bandung"
+    },
+    {
+        "kecamatan": "Babakan Ciparay",
+        "kota": "Bandung"
+    },
+    {
+        "kecamatan": "Bojongloa Kaler",
+        "kota": "Bandung"
+    },
+    {
+        "kecamatan": "Bojongloa Kidul",
+        "kota": "Bandung"
+    },
+    {
+        "kecamatan": "Astanaanyar",
+        "kota": "Bandung"
+    },
+    {
+        "kecamatan": "Sukasari",
+        "kota": "Bandung"
+    },
+    {
+        "kecamatan": "Sukajadi",
+        "kota": "Bandung"
+    },
+    {
+        "kecamatan": "Pasteur",
+        "kota": "Bandung"
+    },
+    {
+        "kecamatan": "Gubeng",
+        "kota": "Surabaya"
+    },
+    {
+        "kecamatan": "Wonokromo",
+        "kota": "Surabaya"
+    },
+    {
+        "kecamatan": "Tegalsari",
+        "kota": "Surabaya"
+    },
+    {
+        "kecamatan": "Genteng",
+        "kota": "Surabaya"
+    },
+    {
+        "kecamatan": "Bubutan",
+        "kota": "Surabaya"
+    },
+    {
+        "kecamatan": "Simokerto",
+        "kota": "Surabaya"
+    },
+    {
+        "kecamatan": "Pabean Cantikan",
+        "kota": "Surabaya"
+    },
+    {
+        "kecamatan": "Semampir",
+        "kota": "Surabaya"
+    },
+    {
+        "kecamatan": "Krembangan",
+        "kota": "Surabaya"
+    },
+    {
+        "kecamatan": "Kenjeran",
+        "kota": "Surabaya"
+    },
+    {
+        "kecamatan": "Bulak",
+        "kota": "Surabaya"
+    },
+    {
+        "kecamatan": "Tambaksari",
+        "kota": "Surabaya"
+    },
+    {
+        "kecamatan": "Mulyorejo",
+        "kota": "Surabaya"
+    },
+    {
+        "kecamatan": "Sukolilo",
+        "kota": "Surabaya"
+    },
+    {
+        "kecamatan": "Rungkut",
+        "kota": "Surabaya"
+    },
+    {
+        "kecamatan": "Gunung Anyar",
+        "kota": "Surabaya"
+    },
+    {
+        "kecamatan": "Tenggilis Mejoyo",
+        "kota": "Surabaya"
+    },
+    {
+        "kecamatan": "Wonocolo",
+        "kota": "Surabaya"
+    },
+    {
+        "kecamatan": "Gayungan",
+        "kota": "Surabaya"
+    },
+    {
+        "kecamatan": "Jambangan",
+        "kota": "Surabaya"
+    },
+    {
+        "kecamatan": "Sawahan",
+        "kota": "Surabaya"
+    },
+    {
+        "kecamatan": "Dukuh Pakis",
+        "kota": "Surabaya"
+    },
+    {
+        "kecamatan": "Wiyung",
+        "kota": "Surabaya"
+    },
+    {
+        "kecamatan": "Karang Pilang",
+        "kota": "Surabaya"
+    },
+    {
+        "kecamatan": "Tandes",
+        "kota": "Surabaya"
+    },
+    {
+        "kecamatan": "Sukomanunggal",
+        "kota": "Surabaya"
+    },
+    {
+        "kecamatan": "Lakarsantri",
+        "kota": "Surabaya"
+    },
+    {
+        "kecamatan": "Sambikerep",
+        "kota": "Surabaya"
+    },
+    {
+        "kecamatan": "Benowo",
+        "kota": "Surabaya"
+    },
+    {
+        "kecamatan": "Pakal",
+        "kota": "Surabaya"
+    },
+    {
+        "kecamatan": "Asemrowo",
+        "kota": "Surabaya"
+    },
+    {
+        "kecamatan": "Medan Baru",
+        "kota": "Medan"
+    },
+    {
+        "kecamatan": "Medan Selayang",
+        "kota": "Medan"
+    },
+    {
+        "kecamatan": "Medan Sunggal",
+        "kota": "Medan"
+    },
+    {
+        "kecamatan": "Medan Helvetia",
+        "kota": "Medan"
+    },
+    {
+        "kecamatan": "Medan Petisah",
+        "kota": "Medan"
+    },
+    {
+        "kecamatan": "Medan Barat",
+        "kota": "Medan"
+    },
+    {
+        "kecamatan": "Medan Timur",
+        "kota": "Medan"
+    },
+    {
+        "kecamatan": "Medan Perjuangan",
+        "kota": "Medan"
+    },
+    {
+        "kecamatan": "Medan Tembung",
+        "kota": "Medan"
+    },
+    {
+        "kecamatan": "Medan Denai",
+        "kota": "Medan"
+    },
+    {
+        "kecamatan": "Medan Area",
+        "kota": "Medan"
+    },
+    {
+        "kecamatan": "Medan Kota",
+        "kota": "Medan"
+    },
+    {
+        "kecamatan": "Medan Maimun",
+        "kota": "Medan"
+    },
+    {
+        "kecamatan": "Medan Polonia",
+        "kota": "Medan"
+    },
+    {
+        "kecamatan": "Medan Johor",
+        "kota": "Medan"
+    },
+    {
+        "kecamatan": "Medan Tuntungan",
+        "kota": "Medan"
+    },
+    {
+        "kecamatan": "Medan Deli",
+        "kota": "Medan"
+    },
+    {
+        "kecamatan": "Medan Labuhan",
+        "kota": "Medan"
+    },
+    {
+        "kecamatan": "Medan Marelan",
+        "kota": "Medan"
+    },
+    {
+        "kecamatan": "Medan Belawan",
+        "kota": "Medan"
+    },
+    {
+        "kecamatan": "Ujung Pandang",
+        "kota": "Makassar"
+    },
+    {
+        "kecamatan": "Panakkukang",
+        "kota": "Makassar"
+    },
+    {
+        "kecamatan": "Rappocini",
+        "kota": "Makassar"
+    },
+    {
+        "kecamatan": "Tamalate",
+        "kota": "Makassar"
+    },
+    {
+        "kecamatan": "Manggala",
+        "kota": "Makassar"
+    },
+    {
+        "kecamatan": "Biringkanaya",
+        "kota": "Makassar"
+    },
+    {
+        "kecamatan": "Tamalanrea",
+        "kota": "Makassar"
+    },
+    {
+        "kecamatan": "Bontala",
+        "kota": "Makassar"
+    },
+    {
+        "kecamatan": "Wajo",
+        "kota": "Makassar"
+    },
+    {
+        "kecamatan": "Tallo",
+        "kota": "Makassar"
+    },
+    {
+        "kecamatan": "Mariso",
+        "kota": "Makassar"
+    },
+    {
+        "kecamatan": "Mamajang",
+        "kota": "Makassar"
+    },
+    {
+        "kecamatan": "Makassar",
+        "kota": "Makassar"
+    },
+    {
+        "kecamatan": "Kepulauan Sangkarrang",
+        "kota": "Makassar"
+    }
+]
