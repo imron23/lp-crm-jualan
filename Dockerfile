@@ -29,6 +29,8 @@ RUN npx prisma generate
 # 2. Start the server
 EXPOSE 3000
 
-# Using 'prisma migrate deploy' is better for production, 
-# but we'll use 'dev' here to auto-create DB if missing for your first Easypanel run.
-CMD ["sh", "-c", "npx prisma migrate dev --name deploy && npm start"]
+# Using 'prisma migrate deploy' for production to avoid interactive prompts.
+
+# Set host to 0.0.0.0 in case we need it
+ENV HOST=0.0.0.0
+CMD ["sh", "-c", "npx prisma migrate deploy && npm start"]
