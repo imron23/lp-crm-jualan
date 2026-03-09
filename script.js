@@ -266,6 +266,19 @@ document.getElementById('consultForm')?.addEventListener('submit', async (e) => 
     const btn = document.getElementById('mSubmitBtn');
     const originalText = btn?.innerHTML;
 
+    // Validasi manual (karena novalidate - field tersembunyi tidak bisa difokus)
+    const currentStepFields = mSteps[mCurrentStep]?.querySelectorAll('input[required], select[required], textarea[required]');
+    let isValid = true;
+    currentStepFields?.forEach(field => {
+        if (field.type === 'checkbox' && !field.checked) isValid = false;
+        else if (field.type !== 'checkbox' && !field.value?.trim()) isValid = false;
+    });
+    if (!isValid) {
+        const firstInvalid = mSteps[mCurrentStep]?.querySelector('input:invalid, select:invalid, textarea:invalid');
+        firstInvalid?.focus?.();
+        return;
+    }
+
     // Extract Form Data
     const formData = new FormData(e.target);
     const data = Object.fromEntries(formData.entries());
@@ -307,9 +320,10 @@ document.getElementById('consultForm')?.addEventListener('submit', async (e) => 
 });
 
 // Main Page Progressive Form Logic (realMuniraForm)
+const mainForm = document.getElementById('realMuniraForm');
+mainForm?.addEventListener('submit', (e) => e.preventDefault()); // Cegah submit tidak sengaja (Enter)
 const mainNextBtn = document.getElementById('nextBtn');
 const mainPrevBtn = document.getElementById('prevBtn');
-const mainForm = document.getElementById('realMuniraForm');
 const mainSteps = document.querySelectorAll('#realMuniraForm .form-step');
 const mainStepNums = document.querySelectorAll('.form-progress-bar .step-num');
 const mainStepLines = document.querySelectorAll('.form-progress-bar .step-line');
@@ -410,19 +424,36 @@ window.initAutocomplete = function (inputId, dropdownId) {
     const API_BASE = '/api';
     let timer;
     inp.addEventListener('input', () => {
-        const q = inp.value.trim(); if (q.length < 3) { dd.style.display = 'none'; return; }
+        const q = inp.value.trim();
+        if (q.length < 2) { dd.style.display = 'none'; return; }
         clearTimeout(timer);
         timer = setTimeout(async () => {
             try {
                 const res = await fetch(`${API_BASE}/wilayah/search?q=${encodeURIComponent(q)}`);
                 const json = await res.json();
                 const results = json.data || [];
-                if (!results.length) { dd.innerHTML = '<div style="padding:15px; color:#888;">No results</div>'; }
-                else {
-                    dd.innerHTML = results.map(r => `<div class="ac-item" style="padding:12px; cursor:pointer;" onclick="selectLoc('${r.kecamatan}, ${r.kota}', '${inputId}', '${dropdownId}')">${r.kecamatan}, ${r.kota}</div>`).join('');
+                dd.innerHTML = '';
+                if (!results.length) {
+                    const empty = document.createElement('div');
+                    empty.style.cssText = 'padding:15px; color:#888;';
+                    empty.textContent = 'Tidak ada hasil';
+                    dd.appendChild(empty);
+                } else {
+                    results.forEach(r => {
+                        const val = `${r.kecamatan}, ${r.kota}`;
+                        const div = document.createElement('div');
+                        div.className = 'ac-item';
+                        div.style.cssText = 'padding:12px; cursor:pointer;';
+                        div.textContent = val;
+                        div.addEventListener('click', () => selectLoc(val, inputId, dropdownId));
+                        dd.appendChild(div);
+                    });
                 }
                 dd.style.display = 'block';
-            } catch (e) { }
+            } catch (err) {
+                dd.innerHTML = '<div style="padding:15px; color:#ff3b30;">Gagal memuat. Pastikan server berjalan di http://localhost:3001</div>';
+                dd.style.display = 'block';
+            }
         }, 300);
     });
 };
@@ -456,8 +487,6 @@ document.addEventListener('click', (e) => {
 
         // Toggle current
         targetItem.classList.toggle('active');
-
-        console.log('Accordion toggled:', targetItem.classList.contains('active'));
     }
 });
 
@@ -789,6 +818,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const csNameDir = document.getElementById('csName_direct');
     const defaultGreetDir = document.getElementById('defaultGreet_direct');
 
+    function escapeHTML(str) {
+        const div = document.createElement('div');
+        div.textContent = str;
+        return div.innerHTML;
+    }
+
     function updatePreviewDirect() {
         if (!waMessageDir || !waPreviewDir) return;
 
@@ -798,10 +833,13 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
+        // Escape first to prevent XSS
+        text = escapeHTML(text);
+
         const replacements = {
-            '\\[sapaan\\]': '<span class="ac-highlight">' + (defaultGreetDir?.value || 'Bapak/Ibu') + '</span>',
+            '\\[sapaan\\]': '<span class="ac-highlight">' + (escapeHTML(defaultGreetDir?.value || 'Bapak/Ibu')) + '</span>',
             '\\[nama\\]': '<span class="ac-highlight">Fulan</span>',
-            '\\[namacs\\]': '<span class="ac-highlight">' + (csNameDir?.value || 'Admin') + '</span>',
+            '\\[namacs\\]': '<span class="ac-highlight">' + (escapeHTML(csNameDir?.value || 'Admin')) + '</span>',
             '\\[detailprogram\\]': '<span class="ac-highlight">Umrah Reguler 12 Hari</span>',
             '\\[nominal\\]': '<span class="ac-highlight">Rp 35.000.000</span>'
         };
@@ -814,6 +852,7 @@ document.addEventListener('DOMContentLoaded', () => {
         let formattedText = text.replace(/\n/g, '<br>');
         waPreviewDir.innerHTML = formattedText + '<span class="wa-time">10:42 <i class="fas fa-check-double" style="color: #53bdeb;"></i></span>';
     }
+
 
     if (waMessageDir) {
         waMessageDir.addEventListener('input', updatePreviewDirect);

@@ -570,6 +570,7 @@ header {
 .input-group {
     position: relative;
     margin-bottom: 25px;
+    overflow: visible;
 }
 
 .input-group input,
@@ -680,7 +681,7 @@ header {
     border-radius: 12px;
     top: 100%;
     left: 0;
-    z-index: 9999;
+    z-index: 99999;
     margin-top: 5px;
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
     display: none;
@@ -2334,6 +2335,9 @@ header {
     overflow-y: auto;
 }
 
+.m-form-step {
+    overflow: visible;
+}
 .m-form-step h4 {
     margin-bottom: 25px;
     font-size: 1.4rem;
@@ -3631,6 +3635,9 @@ body.dark-mode .consultation-modal {
     background: var(--primary);
 }
 
+.form-step {
+    overflow: visible;
+}
 .form-step h4 {
     margin: 15px 0 25px;
     font-size: 1.5rem;

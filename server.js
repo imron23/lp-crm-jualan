@@ -3,13 +3,43 @@ const express = require('express');
 const { PrismaClient } = require('@prisma/client');
 const path = require('path');
 const jwt = require('jsonwebtoken');
+const helmet = require('helmet');
+const rateLimit = require('express-rate-limit');
+const { body, validationResult } = require('express-validator');
+const xss = require('xss-clean');
 
 const prisma = new PrismaClient();
 const app = express();
 
+// Security Headers
+app.use(helmet({
+    contentSecurityPolicy: {
+        directives: {
+            "default-src": ["'self'"],
+            "script-src": ["'self'", "'unsafe-inline'", "https://cdnjs.cloudflare.com", "https://cdn.jsdelivr.net"],
+            "style-src": ["'self'", "'unsafe-inline'", "https://cdnjs.cloudflare.com", "https://fonts.googleapis.com"],
+            "font-src": ["'self'", "https://cdnjs.cloudflare.com", "https://fonts.gstatic.com"],
+            "img-src": ["'self'", "data:", "https://*"],
+            "connect-src": ["'self'"]
+        }
+    }
+}));
+
+// Rate Limiting (Prevent Brute Force)
+const apiLimiter = rateLimit({
+    windowMs: 15 * 60 * 1000, // 15 minutes
+    max: 100, // limit each IP to 100 requests per windowMs
+    message: { success: false, error: 'Terlalu banyak permintaan dari IP ini, coba lagi nanti.' }
+});
+app.use('/api/', apiLimiter);
+
+// Input Sanitization (XSS)
+app.use(xss());
+
 const JWT_SECRET = process.env.JWT_SECRET || 'fallback_secret';
 const ADMIN_USER = process.env.ADMIN_USER || 'admin';
 const ADMIN_PASS = process.env.ADMIN_PASS || 'admin123';
+
 
 // Load Wilayah Data
 const wilayahData = require('./wilayah.json');
@@ -43,8 +73,20 @@ app.post('/api/login', (req, res) => {
     res.status(401).json({ success: false, error: 'Invalid credentials' });
 });
 
-// Submit Lead (Public)
-app.post('/api/leads', async (req, res) => {
+// Submit Lead (Public) with Validation & Sanitization
+app.post('/api/leads', [
+    body('name').trim().isLength({ min: 2 }).escape(),
+    body('phone').trim().isLength({ min: 10, max: 15 }).escape(),
+    body('location').trim().escape(),
+    body('position').trim().escape(),
+    body('expected_features').trim().escape(),
+], async (req, res) => {
+    // Check validation results
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        return res.status(400).json({ success: false, errors: errors.array() });
+    }
+
     try {
         const {
             name,
@@ -59,27 +101,29 @@ app.post('/api/leads', async (req, res) => {
             agree
         } = req.body;
 
+        // Extra layer of protection for DB interactions
         const lead = await prisma.lead.create({
             data: {
-                name,
-                phone,
-                location,
-                position,
-                adsBudget: ads_budget,
+                name: String(name).substring(0, 100), // Enforce length limits
+                phone: String(phone).substring(0, 20),
+                location: String(location).substring(0, 150),
+                position: String(position),
+                adsBudget: String(ads_budget),
                 pilgrimsCount: parseInt(pilgrims_count) || null,
-                obstacles: Array.isArray(obstacles) ? obstacles.join(', ') : obstacles,
-                expectedFeatures: expected_features,
-                meetingTime: meeting_time,
+                obstacles: Array.isArray(obstacles) ? obstacles.join(', ') : String(obstacles),
+                expectedFeatures: String(expected_features).substring(0, 500),
+                meetingTime: String(meeting_time),
                 agreed: !!agree
             }
         });
 
         res.status(201).json({ success: true, lead });
     } catch (error) {
-        console.error('Error creating lead:', error);
-        res.status(500).json({ success: false, error: 'Failed to save lead' });
+        console.error('CRITICAL: Error creating lead:', error);
+        res.status(500).json({ success: false, error: 'Sistem sedang sibuk, gagal menyimpan data.' });
     }
 });
+
 
 // Get Leads (Protected)
 app.get('/api/leads', authenticateToken, async (req, res) => {
@@ -96,7 +140,7 @@ app.get('/api/leads', authenticateToken, async (req, res) => {
 // Search Wilayah (Public)
 app.get('/api/wilayah/search', (req, res) => {
     const q = req.query.q ? req.query.q.toLowerCase() : '';
-    if (q.length < 3) {
+    if (q.length < 2) {
         return res.json({ success: true, data: [] });
     }
 
@@ -108,7 +152,7 @@ app.get('/api/wilayah/search', (req, res) => {
     res.json({ success: true, data: matched });
 });
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3001;
 app.listen(PORT, '0.0.0.0', () => {
     console.log(`Server running at http://0.0.0.0:${PORT}`);
 });
